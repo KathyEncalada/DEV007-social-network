@@ -1,13 +1,13 @@
-import { Home } from "./components/Home.js";
-import { Register } from "./components/Register.js";
-import { Login } from "./components/Login.js";
+import { Home } from './components/Home.js';
+import { Register } from './components/Register.js';
+import { Login } from './components/Login.js';
 
-const rootDiv = document.getElementById("root");
+const rootDiv = document.getElementById('root');
 
 const routes = {
-  "/": Login,
-  "/register": Register,
-  "/home": Home,
+  '/': Login,
+  '/register': Register,
+  '/home': Home
 };
 
 export const onNavigate = (pathname) => {
@@ -20,7 +20,6 @@ export const onNavigate = (pathname) => {
   rootDiv.appendChild(routes[pathname](onNavigate));
 };
 
-console.log(window);
 const component = routes[window.location.pathname];
 
 window.onpopstate = () => {

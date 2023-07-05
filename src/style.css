@@ -38,7 +38,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;
@@ -250,13 +249,6 @@ body {
       flex-direction: column;
     }
   
-    .HomeDiv {
-      display: flex;
-      height: 100vh;
-      background-color: #1b444c;
-      flex-direction: column;
-    }
-  
     .headerHomepage {
       display: flex;
       flex-direction: row;
@@ -323,7 +315,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;
@@ -383,7 +374,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;
@@ -664,7 +654,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;
@@ -723,7 +712,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;
@@ -1069,7 +1057,6 @@ body {
       display: none;
       position: fixed;
       z-index: 1;
-      background-color: white;
       border: 2px solid #1b444c;
       border-radius: 20px;
       width: 100vw;

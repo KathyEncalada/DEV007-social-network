@@ -20,12 +20,11 @@
     "start": "npm run dev",
     "build": "vite build",
     "preview": "vite preview",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write"
-
+    "prettier-format": "prettier --config .prettierrc src/**/*.js --write"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.19.4",
-    "eslint": "^8.3.0",
+    "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.18.2",
@@ -48,6 +47,7 @@
     "commit": "a5360f78b634be4f14eaea996ee4c7afc85a2f48"
   },
   "dependencies": {
+    "@firebase/firestore": "^3.13.0",
     "firebase": "^9.22.2"
   }
 }
