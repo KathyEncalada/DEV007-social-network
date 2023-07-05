@@ -62,7 +62,6 @@ export const Home = () => {
   endModalHome.addEventListener('click', () => {
     document.querySelector('.modalHome').style.display = 'none';
   });
-
   const sectionPost = document.createElement('section');
   sectionPost.classList.add('sectionPost');
 
