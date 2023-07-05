@@ -1,11 +1,23 @@
 import {
+  collection,
+  addDoc,
+  getDocs,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  /*
+  getDoc,
+  signOut
+  */
+  updateDoc,
+} from '@firebase/firestore';
+import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup,
-} from "firebase/auth";
-import { auth, db } from "../firebase";                      
-import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from "@firebase/firestore";   /*"getDocs" nuevo */
+  signInWithPopup
+} from 'firebase/auth';
+import { auth, db } from '../firebase';
 
 /*
 ------------- para el registro--------------- 
@@ -31,23 +43,25 @@ export const initSessionsWithGoogle = () => {
 /*
 ------------- para agregar un post y guardarlo en firestore--------------- 
 */
-export function agregarUnNuevoPost(contenido, db, auth) {
+export function agregarUnNuevoPost(contenido) {
   return addDoc(collection(db, 'post'), {
     contenido,
     usuario: auth.currentUser.email,
     datetime: new Date(),
-    likes: [],
+    likes: []
   });
-};
+}
 
 /*
 ----------  PARA ENLISTAR Y MOSTRAR LOS POST----------
 */
 export const getTask = () => getDocs(collection(db, 'post'));
 
-//export const getPost = id => getDoc(doc(db, 'post', id));
+/*
+export const getPost = id => getDoc(doc(db, 'post', id));
 
-//export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+*/
 
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
@@ -57,36 +71,37 @@ export const onGetTask = (callback) =>
 */
 export const deletePost = (postId) => {
   const postRef = doc(db, 'post', postId);
-   return deleteDoc(postRef);
+  return deleteDoc(postRef);
 };
 
 /*
 ---------- FUNCION PARA EDITAR POST ---------
 */
 
-
 /*
 ---------- PARA DAR LIKE ----------
 */
 export const addLike = (id, likes) => {
   console.log('addLike');
-  if (likes.length === 0 || ! (likes.includes(auth.currentUser.email))) {
+  if (likes.length === 0 || !likes.includes(auth.currentUser.email)) {
     console.log('if');
     console.log(db);
-      updateDoc (doc(db, 'post', id), {
-        likes: [auth.currentUser.email], 
-      }).then(res => console.log(res)).catch((error) => error)
-    }
+    updateDoc(doc(db, 'post', id), {
+      likes: [auth.currentUser.email]
+    })
+      .then((res) => console.log(res))
+      .catch((error) => error);
+  }
 };
 
 /*
 ---------- PARA QUITAR LIKE ----------
-*/
-export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
-  likes: arrayRemove(auth.currentUser.email),
-});
 
-/*
+export const removeLike = (id) =>
+  updateDoc(doc(db, 'posts', id), {
+    likes: arrayRemove(auth.currentUser.email)
+  });
+
 ---------- PARA CERRAR SESIÓN ----------
-*/
 export const logOut = () => signOut(auth);
+*/
