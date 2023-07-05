@@ -94,6 +94,7 @@ export const Home = (onNavigate) => {
       querySnapshot.forEach((doc) => {
         const post = doc.data();
         const postId = doc.id;
+        console.log(post);
 
         const postContainer = document.createElement('div');
         postContainer.setAttribute('id', 'postContainer');
@@ -112,41 +113,39 @@ export const Home = (onNavigate) => {
         const bottomPost = document.createElement('section');
         bottomPost.classList.add('bottomPost');
 
-        const likecounter = (docRef, likesArr) => {
-          const spanLikeDiv = document.createElement('div');
-          const spanLike = document.createElement('span');
-          spanLike.classList.add('spanLike');
-          spanLike.innerHTML = '(0)';
-          
-          const likeImg = document.createElement('img');
-          likeImg.classList.add('likeImg');
-          likeImg.alt = 'corazon like color'
+        // Likes
+        const spanLikeDiv = document.createElement('div');
+        const spanLike = document.createElement('span');
+        spanLike.classList.add('spanLike');
+        spanLike.innerHTML = '(0)';
+        
+        const likeImg = document.createElement('img');
+        likeImg.classList.add('likeImg');
+        likeImg.alt = 'corazon like color'
+        likeImg.src = "./imagenes/like.png";
+        likeImg.addEventListener('click', () => {
+          console.log('like', doc.id);
+          addLike(doc.id, post.likes);
+        });
 
-          if(likesArr.includes(auth.currentUser.email)) {
-            spanLike.innerHTML = `(${likesArr.length})`;
-            likeImg.src = "./imagenes/like.png";
-            likeImg.addEventListener('click', () => {
-              removeLike(docRef.id)
-              .then(() => {
-                likeImg.src = "./imagenes/dislike.png";
-              })
-              .catch((error) => {
-                console.log('error al mover el like', error); 
-              });
-          })
-          } else {
-          spanLike.innerHTML = `(${likesArr.length})`;
-          likeImg.src = "./imagenes/dislike.png";
-          likeImg.addEventListener('click', () => {
-            addLike(docRef.id, likesArr);
-          });
-          };
-          
-          spanLikeDiv.appendChild(likeImg);
-          spanLikeDiv.appendChild(spanLike);
-
-          return spanLikeDiv;
-        };
+        // if(likesArr.includes(auth.currentUser.email)) {
+          // spanLike.innerHTML = `(${likesArr.length})`;
+          // likeImg.addEventListener('click', () => {
+            // removeLike(docRef.id)
+            // .then(() => {
+              // likeImg.src = "./imagenes/dislike.png";
+            // })
+            // .catch((error) => {
+              // console.log('error al mover el like', error); 
+            // });
+        // })
+        // } else {
+        // spanLike.innerHTML = `(${likesArr.length})`;
+        // likeImg.src = "./imagenes/dislike.png";
+        // };
+        
+        spanLikeDiv.appendChild(likeImg);
+        spanLikeDiv.appendChild(spanLike);
 
         const buttonEdit = document.createElement('button');
         buttonEdit.classList.add('buttonEdit');
@@ -173,7 +172,7 @@ export const Home = (onNavigate) => {
 
         topPost.appendChild(postContent);
         
-        bottomPost.appendChild(likecounter /* (doc, post.likes)*/);
+        bottomPost.appendChild(spanLikeDiv);
         bottomPost.appendChild(buttonEdit);
         bottomPost.appendChild(buttonErase);
         

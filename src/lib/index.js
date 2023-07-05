@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth, db } from "../firebase";            
 import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, updateDoc, arrayRemove, arrayUnion } from "@firebase/firestore";
 
@@ -23,7 +23,8 @@ export const agregarUnNuevoPost = (contenido, db, auth) => {
   return addDoc(collection(db,'post'), {
     contenido,
     usuario: auth.currentUser.email,
-    datetime: new Date()
+    datetime: new Date(),
+    likes: [],
   });
 };
 
@@ -38,10 +39,13 @@ export const deletePost = (postId) => {const postRef = doc(db, 'post', postId);
 
 /*---------- PARA DAR LIKE ----------*/
 export const addLike = (id, likes) => {
+  console.log('addLike');
   if (likes.length === 0 || ! (likes.includes(auth.currentUser.email))) {
-      updateDoc (doc(db, 'posts', id), {
-        likes: arrayUnion(auth.currentUser.email), 
-      }).catch((error) => error)
+    console.log('if');
+    console.log(db);
+      updateDoc (doc(db, 'post', id), {
+        likes: [auth.currentUser.email], 
+      }).then(res => console.log(res)).catch((error) => error)
     }
 };
 

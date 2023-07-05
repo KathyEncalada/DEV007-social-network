@@ -1039,6 +1039,11 @@ body {
       height: 40%;
     }
 
+    .likeImg {
+      width: 40px;
+      height: 40px;
+    }
+
     .buttonEdit{
       border-color: #211715;
       height: 26px;
