@@ -22,9 +22,9 @@ export const Home = (onNavigate) => {
   buttonLogOut.classList.add('buttonLogOut');
   buttonLogOut.textContent = 'Cerrar Sesión';
 
-  //buttonLogOut.addEventListener('click', () => {
-    //logOut().then(() => onNavigate('/'));
-  //});
+  buttonLogOut.addEventListener('click', () => {
+    logOut().then(() => onNavigate('/'));
+  });
 
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
