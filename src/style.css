@@ -956,7 +956,7 @@ body {
     }
   
     .logoHome {
-      width: 30%;
+      width: 10%;
     }
   
     .rightHome {
@@ -967,13 +967,14 @@ body {
       justify-content: flex-end;
     }
   
-    #HomeResumePageBtn {
+    .buttonLogOut {
       font-size: 20px;
       padding: 0.5rem 3rem;
       border-radius: 40px;
       border-color: white;
-      color: rgb(61, 60, 60);
       cursor: pointer;
+      margin-top: 1.5rem;
+      margin-right: 1rem;
     }
     
     .bottomHomePage {

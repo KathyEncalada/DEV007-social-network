@@ -1,7 +1,5 @@
 import { auth, db } from '../firebase';
-import { agregarUnNuevoPost } from '../lib';
-import { onGetTask } from '../lib';
-import { deletePost } from '../lib';
+import { agregarUnNuevoPost, onGetTask, deletePost, addLike, removeLike, logOut} from '../lib';
 
 export const Home = (onNavigate) => {
   const HomeDiv = document.createElement('div');
@@ -9,16 +7,24 @@ export const Home = (onNavigate) => {
 
   const headerHomepage = document.createElement('div');
   headerHomepage.classList.add('headerHomepage');
-  headerHomepage.innerHTML += `
-    <div class="leftHome">
-      <img src= "./imagenes/logoFinal.png" class="logoHome" alt="logo">
-    </div>
-    <div class="rightHome">
-      <button type="button" id="HomeResumePageBtn">
-        cerrar sesión
-      </button>
-    </div>
-  `;
+
+  const leftHeaderHome = document.createElement('div');
+  leftHeaderHome.classList.add('leftHeaderHome');
+
+  const logoHome = document.createElement('img');
+  logoHome.classList.add('logoHome');
+  logoHome.src = './imagenes/logoFinal.png'
+
+  const rightHeaderHome = document.createElement('div');
+  rightHeaderHome.classList.add('rigthHeaderHome');
+
+  const buttonLogOut = document.createElement('button');
+  buttonLogOut.classList.add('buttonLogOut');
+  buttonLogOut.textContent = 'Cerrar Sesión';
+
+  //buttonLogOut.addEventListener('click', () => {
+    //logOut().then(() => onNavigate('/'));
+  //});
 
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
@@ -103,6 +109,45 @@ export const Home = (onNavigate) => {
         <p>${post.contenido}</p>
         `;
 
+        const bottomPost = document.createElement('section');
+        bottomPost.classList.add('bottomPost');
+
+        const likecounter = (docRef, likesArr) => {
+          const spanLikeDiv = document.createElement('div');
+          const spanLike = document.createElement('span');
+          spanLike.classList.add('spanLike');
+          spanLike.innerHTML = '(0)';
+          
+          const likeImg = document.createElement('img');
+          likeImg.classList.add('likeImg');
+          likeImg.alt = 'corazon like color'
+
+          if(likesArr.includes(auth.currentUser.email)) {
+            spanLike.innerHTML = `(${likesArr.length})`;
+            likeImg.src = "./imagenes/like.png";
+            likeImg.addEventListener('click', () => {
+              removeLike(docRef.id)
+              .then(() => {
+                likeImg.src = "./imagenes/dislike.png";
+              })
+              .catch((error) => {
+                console.log('error al mover el like', error); 
+              });
+          })
+          } else {
+          spanLike.innerHTML = `(${likesArr.length})`;
+          likeImg.src = "./imagenes/dislike.png";
+          likeImg.addEventListener('click', () => {
+            addLike(docRef.id, likesArr);
+          });
+          };
+          
+          spanLikeDiv.appendChild(likeImg);
+          spanLikeDiv.appendChild(spanLike);
+
+          return spanLikeDiv;
+        };
+
         const buttonEdit = document.createElement('button');
         buttonEdit.classList.add('buttonEdit');
         buttonEdit.textContent = 'Editar';
@@ -126,12 +171,9 @@ export const Home = (onNavigate) => {
     
         });
 
-        const bottomPost = document.createElement('section');
-        bottomPost.classList.add('bottomPost');
-
-
         topPost.appendChild(postContent);
-
+        
+        bottomPost.appendChild(likecounter /* (doc, post.likes)*/);
         bottomPost.appendChild(buttonEdit);
         bottomPost.appendChild(buttonErase);
         
@@ -143,6 +185,11 @@ export const Home = (onNavigate) => {
     })
   };
 
+  leftHeaderHome.appendChild(logoHome);
+  rightHeaderHome.appendChild(buttonLogOut);
+
+  headerHomepage.appendChild(leftHeaderHome);
+  headerHomepage.appendChild(rightHeaderHome);
 
   postPublicar.appendChild(publicarButton);
 
@@ -160,4 +207,4 @@ export const Home = (onNavigate) => {
   HomeDiv.appendChild(bottomHomePage);
 
   return HomeDiv;
-}
+};
