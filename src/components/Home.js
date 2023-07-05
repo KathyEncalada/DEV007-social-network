@@ -154,13 +154,7 @@ export const Home = (onNavigate) => {
         spanLikeDiv.appendChild(likeImg);
         spanLikeDiv.appendChild(spanLike);
 
-        const buttonEdit = document.createElement('button');
-        buttonEdit.classList.add('buttonEdit');
-        buttonEdit.textContent = 'Editar';
-        buttonEdit.setAttribute('data-id', doc.id);
         /*
-        buttonEdit.setAttribute('data-id', doc.id);
-
         --------------borrar post----------------- 
         */
         const buttonErase = document.createElement('button');
@@ -178,6 +172,62 @@ export const Home = (onNavigate) => {
               console.log('Error al borrar el post:', error);
             });
         });
+
+        /*
+        ---------------editar post----------------
+        */
+        
+        const buttonEdit = document.createElement('button');
+        buttonEdit.classList.add('buttonEdit');
+        buttonEdit.textContent = 'Editar';
+        buttonEdit.setAttribute('data-id', doc.id);
+        //  buttonEdit.forEach(btn => {
+        //   btn.addEventListener('click', async (e) => {
+        //     const doc = await getPost(e.target.dataset.id)
+        //     const task = doc.data()
+
+        //     taskForm['task-title'].value = task.title
+        //     taskForm['task-description'].value = task.description
+
+        //     editStatus = true;
+        //     id = e.target.dataset.id;
+        //   })
+        //  })
+            
+        // 
+        // buttonEdit.addEventListener('click', () => {
+        //   const postEd = buttonEdit.getAttribute('data-id');
+        //   editarPost(postEd)
+        //   .then(() => {
+        //     sectionPost.innerHTML = '';
+        //     getData();
+        //   } )
+        //   .catch((error) => {
+        //     console.log('Error al editar el post:', error);
+        //   });
+
+        // })
+        // taskForm.addEventListener("submit", (e) => {
+        //   e.preventDefault();
+
+        //   const title = taskForm["task-title"];
+        //   const description = taskForm["task-description"];
+          
+        //   if (!editStatus){
+        //     savePost(title.value, description.value);
+            
+        //   }else {
+        //     updatePost(id, {
+        //       title: title.value,
+        //       description: description.value,
+        //     });
+
+        //     editStatus = false;
+        //   }
+          
+
+        //   taskForm.reset();
+        // });
 
         topPost.appendChild(postContent);
         

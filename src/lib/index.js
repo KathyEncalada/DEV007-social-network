@@ -1,19 +1,11 @@
 import {
-  collection,
-  addDoc,
-  getDocs,
-  onSnapshot,
-  deleteDoc,
-  doc
-} from '@firebase/firestore';
-
-import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup
-} from 'firebase/auth';
-import { auth, db } from '../firebase';
+  signInWithPopup,
+} from "firebase/auth";
+import { auth, db } from "../firebase";                      
+import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from "@firebase/firestore";   /*"getDocs" nuevo */
 
 /*
 ------------- para el registro--------------- 
@@ -53,6 +45,10 @@ export function agregarUnNuevoPost(contenido, db, auth) {
 */
 export const getTask = () => getDocs(collection(db, 'post'));
 
+//export const getPost = id => getDoc(doc(db, 'post', id));
+
+//export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
 
@@ -63,6 +59,11 @@ export const deletePost = (postId) => {
   const postRef = doc(db, 'post', postId);
    return deleteDoc(postRef);
 };
+
+/*
+---------- FUNCION PARA EDITAR POST ---------
+*/
+
 
 /*
 ---------- PARA DAR LIKE ----------
