@@ -1,26 +1,11 @@
 import {
-  collection,
-  addDoc,
-  getDocs,
-  onSnapshot,
-  deleteDoc,
-  doc
-} from '@firebase/firestore';
-
-import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-<<<<<<< HEAD
   signInWithPopup,
 } from "firebase/auth";
-import { auth, db } from "../firebase";                              /*"db" nuevo */
-import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc, updatePost } from "@firebase/firestore";   /*"getDocs" nuevo */
-=======
-  signInWithPopup
-} from 'firebase/auth';
-import { auth, db } from '../firebase';
->>>>>>> 05c06301463a4fb5154370fd7f031639bb396bc6
+import { auth, db } from "../firebase";                      
+import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc } from "@firebase/firestore";   /*"getDocs" nuevo */
 
 /*
 ------------- para el registro--------------- 
@@ -46,11 +31,12 @@ export const initSessionsWithGoogle = () => {
 /*
 ------------- para agregar un post y guardarlo en firestore--------------- 
 */
-export const agregarUnNuevoPost = (contenido) => {
-  addDoc(collection(db, 'post'), {
+export function agregarUnNuevoPost(contenido, db, auth) {
+  return addDoc(collection(db, 'post'), {
     contenido,
     usuario: auth.currentUser.email,
-    datetime: new Date()
+    datetime: new Date(),
+    likes: [],
   });
 };
 
@@ -58,24 +44,49 @@ export const agregarUnNuevoPost = (contenido) => {
 ----------  PARA ENLISTAR Y MOSTRAR LOS POST----------
 */
 export const getTask = () => getDocs(collection(db, 'post'));
-<<<<<<< HEAD
-export const onGetTask = (callback) => onSnapshot(collection(db, 'post'), callback)
-//export const deletePost = (id) => deleteDoc(doc(db, 'task', id));
-export const deletePost = (postId) => {const postRef = doc(db, 'post', postId);
-   return deleteDoc(postRef);
-};
-export const getPost = id => getDoc(doc(db, 'post', id));
 
-export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
-=======
+//export const getPost = id => getDoc(doc(db, 'post', id));
+
+//export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
->>>>>>> 05c06301463a4fb5154370fd7f031639bb396bc6
 
 /*
-----------  FUNCIONES PARA BORRAR POST----------
+----------  FUNCIONES PARA BORRAR POST ----------
 */
 export const deletePost = (postId) => {
   const postRef = doc(db, 'post', postId);
-  return deleteDoc(postRef);
+   return deleteDoc(postRef);
 };
+
+/*
+---------- FUNCION PARA EDITAR POST ---------
+*/
+
+
+/*
+---------- PARA DAR LIKE ----------
+*/
+export const addLike = (id, likes) => {
+  console.log('addLike');
+  if (likes.length === 0 || ! (likes.includes(auth.currentUser.email))) {
+    console.log('if');
+    console.log(db);
+      updateDoc (doc(db, 'post', id), {
+        likes: [auth.currentUser.email], 
+      }).then(res => console.log(res)).catch((error) => error)
+    }
+};
+
+/*
+---------- PARA QUITAR LIKE ----------
+*/
+export const removeLike = (id) => updateDoc(doc(db, 'posts', id), {
+  likes: arrayRemove(auth.currentUser.email),
+});
+
+/*
+---------- PARA CERRAR SESIÓN ----------
+*/
+export const logOut = () => signOut(auth);
