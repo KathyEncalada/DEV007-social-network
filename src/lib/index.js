@@ -11,16 +11,9 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-<<<<<<< HEAD
-  signInWithPopup,
-} from "firebase/auth";
-import { auth, db } from "../firebase";                              /*"db" nuevo */
-import { collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, getDoc, updateDoc, updatePost } from "@firebase/firestore";   /*"getDocs" nuevo */
-=======
   signInWithPopup
 } from 'firebase/auth';
 import { auth, db } from '../firebase';
->>>>>>> 05c06301463a4fb5154370fd7f031639bb396bc6
 
 /*
 ------------- para el registro--------------- 
@@ -58,21 +51,14 @@ export const agregarUnNuevoPost = (contenido) => {
 ----------  PARA ENLISTAR Y MOSTRAR LOS POST----------
 */
 export const getTask = () => getDocs(collection(db, 'post'));
-<<<<<<< HEAD
-export const onGetTask = (callback) => onSnapshot(collection(db, 'post'), callback)
-//export const deletePost = (id) => deleteDoc(doc(db, 'task', id));
-export const deletePost = (postId) => {const postRef = doc(db, 'post', postId);
-   return deleteDoc(postRef);
-};
-export const getPost = id => getDoc(doc(db, 'post', id));
-
-export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
-=======
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
->>>>>>> 05c06301463a4fb5154370fd7f031639bb396bc6
-
 /*
+export const getPost = (id) => getDoc(doc(db, 'post', id));
+export const updatePost = (id, newFields) =>
+  updateDoc(doc(db, 'post', id), newFields);
+
+
 ----------  FUNCIONES PARA BORRAR POST----------
 */
 export const deletePost = (postId) => {

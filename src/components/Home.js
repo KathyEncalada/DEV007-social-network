@@ -84,8 +84,8 @@ export const Home = () => {
         <p>${post.contenido}</p>
         `;
 
-        /*        --------------borrar post----------------- 
-        */
+        /*        --------------borrar post-----------------
+         */
         const buttonErase = document.createElement('button');
         buttonErase.classList.add('buttonErase');
         buttonErase.textContent = 'Borrar';
@@ -102,21 +102,21 @@ export const Home = () => {
             });
         });
 
-//botón de editar 
-        
-         buttonEdit.forEach(btn => {
+        // botón de editar
+        /*
+        buttonEdit.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
-            const doc = await getPost(e.target.dataset.id)
-            const task = doc.data()
+            const doc = await getPost(e.target.dataset.id);
+            const task = doc.data();
 
-            taskForm['task-title'].value = task.title
-            taskForm['task-description'].value = task.description
+            taskForm['task-title'].value = task.title;
+            taskForm['task-description'].value = task.description;
 
             editStatus = true;
             id = e.target.dataset.id;
-          })
-         })
-            
+          });
+        });
+
         const buttonEdit = document.createElement('button');
         buttonEdit.classList.add('buttonEdit');
         buttonEdit.textContent = 'Editar';
@@ -124,44 +124,43 @@ export const Home = () => {
         buttonEdit.addEventListener('click', () => {
           const postEd = buttonEdit.getAttribute('data-id');
           editarPost(postEd)
-          .then(() => {
-            sectionPost.innerHTML = '';
-            getData();
-          } )
-          .catch((error) => {
-            console.log('Error al editar el post:', error);
-          });
-
-        })
-        //const bottomPost = document.createElement('section');
-        //bottomPost = classList.add('bottomPost');
-        taskForm.addEventListener("submit", (e) => {
+            .then(() => {
+              sectionPost.innerHTML = '';
+              getData();
+            })
+            .catch((error) => {
+              console.log('Error al editar el post:', error);
+            });
+        });
+        // const bottomPost = document.createElement('section');
+        // bottomPost = classList.add('bottomPost');
+        taskForm.addEventListener('submit', (e) => {
           e.preventDefault();
 
-          const title = taskForm["task-title"];
-          const description = taskForm["task-description"];
-          
-          if (!editStatus){
+          const title = taskForm['task-title'];
+          const description = taskForm['task-description'];
+
+          if (!editStatus) {
             savePost(title.value, description.value);
-            
-          }else {
+          } else {
             updatePost(id, {
               title: title.value,
-              description: description.value,
+              description: description.value
             });
 
             editStatus = false;
           }
-          
 
           taskForm.reset();
         });
+        */
         const bottomPost = document.createElement('section');
         bottomPost.classList.add('bottomPost');
 
         topPost.appendChild(postContent);
-
+        /*
         bottomPost.appendChild(buttonEdit);
+        */
         bottomPost.appendChild(buttonErase);
 
         postContainer.insertAdjacentElement('afterbegin', topPost);
