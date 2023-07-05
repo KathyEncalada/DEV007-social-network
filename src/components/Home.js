@@ -1,10 +1,6 @@
 import { auth, db } from '../firebase';
 import { agregarUnNuevoPost, onGetTask, deletePost } from '../lib';
 /*
-import { onGetTask } from '../lib';
-import { deletePost } from '../lib';
-*/
-/*
 export const Home = (onNavigate) => {
   */
 export const Home = () => {
@@ -88,14 +84,7 @@ export const Home = () => {
         <p>${post.contenido}</p>
         `;
 
-        const buttonEdit = document.createElement('button');
-        buttonEdit.classList.add('buttonEdit');
-        buttonEdit.textContent = 'Editar';
-        buttonEdit.setAttribute('data-id', doc.id);
-        /*
-        buttonEdit.setAttribute('data-id', doc.id);
-
-        --------------borrar post----------------- 
+        /*        --------------borrar post----------------- 
         */
         const buttonErase = document.createElement('button');
         buttonErase.classList.add('buttonErase');
@@ -113,6 +102,60 @@ export const Home = () => {
             });
         });
 
+//botón de editar 
+        
+         buttonEdit.forEach(btn => {
+          btn.addEventListener('click', async (e) => {
+            const doc = await getPost(e.target.dataset.id)
+            const task = doc.data()
+
+            taskForm['task-title'].value = task.title
+            taskForm['task-description'].value = task.description
+
+            editStatus = true;
+            id = e.target.dataset.id;
+          })
+         })
+            
+        const buttonEdit = document.createElement('button');
+        buttonEdit.classList.add('buttonEdit');
+        buttonEdit.textContent = 'Editar';
+        buttonEdit.setAttribute('data-id', doc.id);
+        buttonEdit.addEventListener('click', () => {
+          const postEd = buttonEdit.getAttribute('data-id');
+          editarPost(postEd)
+          .then(() => {
+            sectionPost.innerHTML = '';
+            getData();
+          } )
+          .catch((error) => {
+            console.log('Error al editar el post:', error);
+          });
+
+        })
+        //const bottomPost = document.createElement('section');
+        //bottomPost = classList.add('bottomPost');
+        taskForm.addEventListener("submit", (e) => {
+          e.preventDefault();
+
+          const title = taskForm["task-title"];
+          const description = taskForm["task-description"];
+          
+          if (!editStatus){
+            savePost(title.value, description.value);
+            
+          }else {
+            updatePost(id, {
+              title: title.value,
+              description: description.value,
+            });
+
+            editStatus = false;
+          }
+          
+
+          taskForm.reset();
+        });
         const bottomPost = document.createElement('section');
         bottomPost.classList.add('bottomPost');
 
