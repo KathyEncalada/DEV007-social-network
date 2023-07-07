@@ -57,12 +57,6 @@ export function agregarUnNuevoPost(contenido) {
 */
 export const getTask = () => getDocs(collection(db, 'post'));
 
-/*
-export const getPost = id => getDoc(doc(db, 'post', id));
-
-export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
-*/
-
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
 
@@ -107,6 +101,8 @@ export const removeLike = (id) =>
     likes: arrayRemove(auth.currentUser.email)
   });
 
----------- PARA CERRAR SESIÓN ----------*/
+/*
+  ---------- PARA CERRAR SESIÓN ----------
+*/
 
 export const logOut = () => signOut(auth);
