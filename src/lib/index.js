@@ -1,19 +1,20 @@
 import {
-  GoogleAuthProvider,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup
-} from 'firebase/auth';
-import {
   collection,
   addDoc,
   getDocs,
   onSnapshot,
   deleteDoc,
   doc,
-  updateDoc,
-  signOut
+  updateDoc
 } from '@firebase/firestore'; /* "getDocs" nuevo */
+
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signInWithPopup
+} from 'firebase/auth';
+
 import { auth, db } from '../firebase';
 
 /*
@@ -53,6 +54,13 @@ export function agregarUnNuevoPost(contenido) {
 ----------  PARA ENLISTAR Y MOSTRAR LOS POST----------
 */
 export const getTask = () => getDocs(collection(db, 'post'));
+
+/*
+export const getPost = id => getDoc(doc(db, 'post', id));
+
+export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
+*/
+
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
 /*
@@ -95,8 +103,9 @@ export const removeLike = (id) =>
   updateDoc(doc(db, 'posts', id), {
     likes: arrayRemove(auth.currentUser.email)
   });
-
+*/
 /*
 ---------- PARA CERRAR SESIÓN ----------
-*/
+
 export const logOut = () => signOut(auth);
+*/

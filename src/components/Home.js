@@ -1,13 +1,19 @@
+/*
+import { async } from 'regenerator-runtime';
+*/
 import { auth, db } from '../firebase';
 import {
   agregarUnNuevoPost,
   onGetTask,
   deletePost,
-  addLike,
+  addLike
+  /*
   logOut
+  removeLike,
+  */
 } from '../lib';
 
-export const Home = (onNavigate) => {
+export const Home = () => {
   const HomeDiv = document.createElement('div');
   HomeDiv.classList.add('HomeDiv');
 
@@ -27,10 +33,13 @@ export const Home = (onNavigate) => {
   const buttonLogOut = document.createElement('button');
   buttonLogOut.classList.add('buttonLogOut');
   buttonLogOut.textContent = 'Cerrar Sesión';
-
+  /*
   buttonLogOut.addEventListener('click', () => {
-    logOut().then(() => onNavigate('/'));
+    logOut().then(() => {
+      onNavigate('/');
+    });
   });
+*/
 
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
