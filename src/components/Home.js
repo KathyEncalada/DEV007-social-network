@@ -6,14 +6,15 @@ import {
   agregarUnNuevoPost,
   onGetTask,
   deletePost,
-  addLike
+  addLike,
+  editPost,
   /*
-  logOut
   removeLike,
   */
+  logOut
 } from '../lib';
 
-export const Home = () => {
+export const Home = (onNavigate) => {
   const HomeDiv = document.createElement('div');
   HomeDiv.classList.add('HomeDiv');
 
@@ -34,27 +35,38 @@ export const Home = () => {
   buttonLogOut.classList.add('buttonLogOut');
   buttonLogOut.textContent = 'Cerrar Sesión';
   /*
-  buttonLogOut.addEventListener('click', () => {
-    logOut().then(() => {
-      onNavigate('/');
-    });
-  });
-*/
+  --------- FUNCION CERRAR SESION ---------
+  */
 
+  buttonLogOut.addEventListener('click', () => {
+    logOut().then(() => onNavigate('/'));
+  });
+  /*
+  ----- Contenedor de la Parte de abajo de la Homepage -----
+  */
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
 
+  /*
+  ----- Contenedor Botón Escribe lo que quieras publicar-----
+  */
   const postPublicar = document.createElement('section');
   postPublicar.classList.add('postPublicar');
 
   const publicarButton = document.createElement('button');
   publicarButton.classList.add('publicarButton');
-  publicarButton.textContent = '¿Qué estás pensando?';
+  publicarButton.textContent = 'Escribe lo que quieras publicar';
 
+  /*
+  ----- Evento que abre el modal para publicar post-----
+  */
   publicarButton.addEventListener('click', () => {
     document.querySelector('.modalHome').style.display = 'flex';
   });
 
+  /*
+  ----- Modal donde se escribe el post que se va a publicar -----
+  */
   const modalHome = document.createElement('div');
   modalHome.classList.add('modalHome');
 
@@ -64,6 +76,7 @@ export const Home = () => {
 
   const labelModal = document.createElement('label');
   labelModal.classList.add('labelModal');
+  labelModal.textContent = 'Escribe tu publicación';
 
   const textareaModal = document.createElement('textarea');
   textareaModal.classList.add('textAreaModal');
@@ -76,16 +89,77 @@ export const Home = () => {
   endModalHome.classList.add('endModalHome');
   endModalHome.innerHTML = '&times;';
 
+  /*
+  ----- Evento que cierra el modal con la X -----
+  */
   endModalHome.addEventListener('click', () => {
     document.querySelector('.modalHome').style.display = 'none';
   });
+
+  /*
+  ----- contenedor que sostiene los post segun se van agregando -----
+  */
   const sectionPost = document.createElement('section');
   sectionPost.classList.add('sectionPost');
 
-  const getData = () => {
+  /*
+  ----- crea contenedor padre modal editar post-----
+  */
+  const modalEdit = document.createElement('div');
+  modalEdit.classList.add('modalEdit');
+
+  /*
+  ----- funcion editar post ------
+  */
+  function showEditModal(text, id) {
+    const modalContentEdit = document.createElement('div');
+    modalContentEdit.classList.add('modalContentEdit');
+
+    const labelEditModal = document.createElement('label');
+    labelEditModal.classList.add('labelEditModal');
+    labelEditModal.textContent = 'Edita aquí tu publicación';
+
+    const textareaEditModal = document.createElement('textarea');
+    textareaEditModal.classList.add('textareaEditModal');
+    textareaEditModal.value = text;
+
+    const modalEditBtn = document.createElement('button');
+    modalEditBtn.classList.add('modalEditBtn');
+    modalEditBtn.textContent = 'Editar';
+
     /*
-    función que crea el post y su contenedor y recorre el array de los post
+    ------ evento que guarda el texto editado ------
     */
+    modalEditBtn.addEventListener('click', () => {
+      editPost(textareaEditModal.value, id).then(() => {
+        modalEdit.style.display = 'none';
+      });
+    });
+
+    const endEditModal = document.createElement('span');
+    endEditModal.classList.add('endEditModal');
+    endEditModal.innerHTML = '&times;';
+
+    /*
+    -------- evento que cierra el modal de editar con la X -------
+    */
+    endEditModal.addEventListener('click', () => {
+      document.querySelector('.modalEdit').style.display = 'none';
+    });
+
+    modalContentEdit.appendChild(labelEditModal);
+    modalContentEdit.appendChild(textareaEditModal);
+    modalContentEdit.appendChild(modalEditBtn);
+    modalContentEdit.appendChild(endEditModal);
+    modalEdit.appendChild(modalContentEdit);
+
+    document.querySelector('.modalEdit').style.display = 'flex';
+  }
+
+  /*
+  ----- función que crea el post y su contenido y recorre el array de los post -----
+  */
+  const getData = () => {
     onGetTask((querySnapshot) => {
       sectionPost.innerHTML = '';
       querySnapshot.forEach((doc) => {
@@ -93,12 +167,21 @@ export const Home = () => {
         const postId = doc.id;
         console.log(post);
 
+        /*
+        ----- contenedor padre del nuevo post-----
+        */
         const postContainer = document.createElement('div');
         postContainer.setAttribute('id', 'postContainer');
 
+        /*
+        ----- parte superior postContainer ------
+        */
         const topPost = document.createElement('section');
         topPost.classList.add('topPost');
 
+        /* 
+        ------ aqui se publica el contenido del nuevo post -----
+        */
         const postContent = document.createElement('div');
         postContent.classList.add('postContent');
         postContent.setAttribute('id', postId);
@@ -107,19 +190,37 @@ export const Home = () => {
         <p>${post.contenido}</p>
         `;
 
+        /*
+        ----- parte inferior del postContainer -----
+        */
         const bottomPost = document.createElement('section');
         bottomPost.classList.add('bottomPost');
 
-        // Likes
-        const spanLikeDiv = document.createElement('div');
+        /*
+        ------ contenedor likes ------
+        */
+        const spanLikeContenedor = document.createElement('div');
+        spanLikeContenedor.classList.add('spanLikeContenedor');
+
+        /*
+        ----- span que contiene el conteo de likes -----
+        */
         const spanLike = document.createElement('span');
         spanLike.classList.add('spanLike');
         spanLike.innerHTML = '(0)';
 
+        /*
+        ---- like -----
+        */
         const likeImg = document.createElement('img');
         likeImg.classList.add('likeImg');
         likeImg.alt = 'corazon like color';
         likeImg.src = './imagenes/like.png';
+
+        /*
+        ----- funcion dar like y guardar firebase ---- 
+        */
+
         likeImg.addEventListener('click', () => {
           console.log('like', doc.id);
           addLike(doc.id, post.likes);
@@ -141,8 +242,8 @@ export const Home = () => {
         // likeImg.src = "./imagenes/dislike.png";
         // };
 
-        spanLikeDiv.appendChild(likeImg);
-        spanLikeDiv.appendChild(spanLike);
+        spanLikeContenedor.appendChild(likeImg);
+        spanLikeContenedor.appendChild(spanLike);
 
         /*
         --------------borrar post----------------- 
@@ -151,6 +252,7 @@ export const Home = () => {
         buttonErase.classList.add('buttonErase');
         buttonErase.textContent = 'Borrar';
         buttonErase.setAttribute('data-id', doc.id);
+
         buttonErase.addEventListener('click', () => {
           const postsId = buttonErase.getAttribute('data-id');
           deletePost(postsId)
@@ -163,89 +265,40 @@ export const Home = () => {
             });
         });
 
-        // botón de editar
         /*
-        buttonEdit.forEach((btn) => {
-          btn.addEventListener('click', async (e) => {
-            const doc = await getPost(e.target.dataset.id);
-            const task = doc.data();
-
-            taskForm['task-title'].value = task.title;
-            taskForm['task-description'].value = task.description;
-
-            editStatus = true;
-            id = e.target.dataset.id;
-          });
-        });
-
-        /*
-        ---------------editar post----------------
+        --------------- crea boton editar----------------
         */
 
         const buttonEdit = document.createElement('button');
         buttonEdit.classList.add('buttonEdit');
         buttonEdit.textContent = 'Editar';
         buttonEdit.setAttribute('data-id', doc.id);
-        //  buttonEdit.forEach(btn => {
-        //   btn.addEventListener('click', async (e) => {
-        //     const doc = await getPost(e.target.dataset.id)
-        //     const task = doc.data()
 
-        //     taskForm['task-title'].value = task.title
-        //     taskForm['task-description'].value = task.description
+        /*
+        -------- Evento que abre el modal ---------
+        */
 
-        //     editStatus = true;
-        //     id = e.target.dataset.id;
-        //   })
-        //  })
-
-        //
-        // buttonEdit.addEventListener('click', () => {
-        //   const postEd = buttonEdit.getAttribute('data-id');
-        //   editarPost(postEd)
-        //   .then(() => {
-        //     sectionPost.innerHTML = '';
-        //     getData();
-        //   } )
-        //   .catch((error) => {
-        //     console.log('Error al editar el post:', error);
-        //   });
-
-        // })
-        // taskForm.addEventListener("submit", (e) => {
-        //   e.preventDefault();
-
-        //   const title = taskForm["task-title"];
-        //   const description = taskForm["task-description"];
-
-        //   if (!editStatus){
-        //     savePost(title.value, description.value);
-
-        //   }else {
-        //     updatePost(id, {
-        //       title: title.value,
-        //       description: description.value,
-        //     });
-
-        //     editStatus = false;
-        //   }
-
-        //   taskForm.reset();
-        // });
+        buttonEdit.addEventListener('click', () => {
+          modalEdit.innerHTML = '';
+          showEditModal(post.contenido, doc.id);
+        });
 
         topPost.appendChild(postContent);
 
-        bottomPost.appendChild(spanLikeDiv);
+        bottomPost.appendChild(spanLikeContenedor);
         bottomPost.appendChild(buttonEdit);
         bottomPost.appendChild(buttonErase);
 
-        postContainer.insertAdjacentElement('afterbegin', topPost);
+        postContainer.appendChild(topPost);
         postContainer.appendChild(bottomPost);
         sectionPost.appendChild(postContainer);
       });
     });
   };
 
+  /*
+  ------función para publicar un nuevo post ------
+  */
   modalBtnHome.addEventListener('click', () => {
     agregarUnNuevoPost(textareaModal.value, db, auth)
       .then(() => {
@@ -264,8 +317,8 @@ export const Home = () => {
   */
   window.addEventListener('DOMContentLoaded', async () => {
     console.log('dom');
+    await getData();
     sectionPost.innerHTML = '';
-    getData();
   });
 
   leftHeaderHome.appendChild(logoHome);
@@ -285,6 +338,7 @@ export const Home = () => {
   modalContentHome.appendChild(endModalHome);
   modalHome.appendChild(modalContentHome);
 
+  HomeDiv.appendChild(modalEdit);
   HomeDiv.appendChild(modalHome);
   HomeDiv.appendChild(headerHomepage);
   HomeDiv.appendChild(bottomHomePage);

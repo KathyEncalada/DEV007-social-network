@@ -12,7 +12,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup
+  signInWithPopup,
+  signOut
 } from 'firebase/auth';
 
 import { auth, db } from '../firebase';
@@ -55,12 +56,6 @@ export function agregarUnNuevoPost(contenido) {
 */
 export const getTask = () => getDocs(collection(db, 'post'));
 
-/*
-export const getPost = id => getDoc(doc(db, 'post', id));
-
-export const updatePost = (id, newFields) => updateDoc(doc(db, 'post', id), newFields);
-*/
-
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
 /*
@@ -79,7 +74,12 @@ export const deletePost = (postId) => {
 /*
 ---------- FUNCION PARA EDITAR POST ---------
 */
-
+export const editPost = async (textAreaModal, id) => {
+  const docRef = doc(db, 'post', id);
+  await updateDoc(docRef, {
+    contenido: `${textAreaModal}`
+  });
+};
 /*
 ---------- PARA DAR LIKE ----------
 */
@@ -103,9 +103,9 @@ export const removeLike = (id) =>
   updateDoc(doc(db, 'posts', id), {
     likes: arrayRemove(auth.currentUser.email)
   });
-*/
+
 /*
----------- PARA CERRAR SESIÓN ----------
+  ---------- PARA CERRAR SESIÓN ----------
+*/
 
 export const logOut = () => signOut(auth);
-*/
