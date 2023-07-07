@@ -6,12 +6,12 @@ import {
   agregarUnNuevoPost,
   onGetTask,
   deletePost,
-  editPost,
   addLike,
+  editPost,
   /*
   removeLike,
   */
-  logOut  
+  logOut
 } from '../lib';
 
 export const Home = (onNavigate) => {
@@ -34,25 +34,23 @@ export const Home = (onNavigate) => {
   const buttonLogOut = document.createElement('button');
   buttonLogOut.classList.add('buttonLogOut');
   buttonLogOut.textContent = 'Cerrar Sesión';
-
   /*
   --------- FUNCION CERRAR SESION ---------
   */
 
   buttonLogOut.addEventListener('click', () => {
-    logOut()
-    .then(() => onNavigate('/'));
+    logOut().then(() => onNavigate('/'));
   });
   /*
   ----- Contenedor de la Parte de abajo de la Homepage -----
   */
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
-  
+
   /*
   ----- Contenedor Botón Escribe lo que quieras publicar-----
   */
-  const postPublicar = document.createElement('section');  
+  const postPublicar = document.createElement('section');
   postPublicar.classList.add('postPublicar');
 
   const publicarButton = document.createElement('button');
@@ -105,6 +103,60 @@ export const Home = (onNavigate) => {
   sectionPost.classList.add('sectionPost');
 
   /*
+  ----- crea contenedor padre modal editar post-----
+  */
+  const modalEdit = document.createElement('div');
+  modalEdit.classList.add('modalEdit');
+
+  /*
+  ----- funcion editar post ------
+  */
+  function showEditModal(text, id) {
+    const modalContentEdit = document.createElement('div');
+    modalContentEdit.classList.add('modalContentEdit');
+
+    const labelEditModal = document.createElement('label');
+    labelEditModal.classList.add('labelEditModal');
+    labelEditModal.textContent = 'Edita aquí tu publicación';
+
+    const textareaEditModal = document.createElement('textarea');
+    textareaEditModal.classList.add('textareaEditModal');
+    textareaEditModal.value = text;
+
+    const modalEditBtn = document.createElement('button');
+    modalEditBtn.classList.add('modalEditBtn');
+    modalEditBtn.textContent = 'Editar';
+
+    /*
+    ------ evento que guarda el texto editado ------
+    */
+    modalEditBtn.addEventListener('click', () => {
+      editPost(textareaEditModal.value, id).then(() => {
+        modalEdit.style.display = 'none';
+      });
+    });
+
+    const endEditModal = document.createElement('span');
+    endEditModal.classList.add('endEditModal');
+    endEditModal.innerHTML = '&times;';
+
+    /*
+    -------- evento que cierra el modal de editar con la X -------
+    */
+    endEditModal.addEventListener('click', () => {
+      document.querySelector('.modalEdit').style.display = 'none';
+    });
+
+    modalContentEdit.appendChild(labelEditModal);
+    modalContentEdit.appendChild(textareaEditModal);
+    modalContentEdit.appendChild(modalEditBtn);
+    modalContentEdit.appendChild(endEditModal);
+    modalEdit.appendChild(modalContentEdit);
+
+    document.querySelector('.modalEdit').style.display = 'flex';
+  }
+
+  /*
   ----- función que crea el post y su contenido y recorre el array de los post -----
   */
   const getData = () => {
@@ -148,9 +200,8 @@ export const Home = (onNavigate) => {
         ------ contenedor likes ------
         */
         const spanLikeContenedor = document.createElement('div');
-        spanLikeContenedor.classList.add('spanLikeContenedor')
+        spanLikeContenedor.classList.add('spanLikeContenedor');
 
-      
         /*
         ----- span que contiene el conteo de likes -----
         */
@@ -169,7 +220,7 @@ export const Home = (onNavigate) => {
         /*
         ----- funcion dar like y guardar firebase ---- 
         */
-       
+
         likeImg.addEventListener('click', () => {
           console.log('like', doc.id);
           addLike(doc.id, post.likes);
@@ -246,63 +297,6 @@ export const Home = (onNavigate) => {
   };
 
   /*
-  ----- crea contenedor padre modal editar post-----
-  */
-  const modalEdit = document.createElement('div');
-  modalEdit.classList.add('modalEdit');
-
-
-  /*
-  ----- funcion editar post ------
-  */
-  function showEditModal(text, id) {
-
-    const modalContentEdit = document.createElement('div');
-    modalContentEdit.classList.add('modalContentEdit');
-
-    const labelEditModal = document.createElement('label');
-    labelEditModal.classList.add('labelEditModal');
-    labelEditModal.textContent = 'Edita aquí tu publicación';
-
-    const textareaEditModal = document.createElement('textarea');
-    textareaEditModal.classList.add('textareaEditModal');
-    textareaEditModal.value = text;
-
-    const modalEditBtn = document.createElement('button');
-    modalEditBtn.classList.add('modalEditBtn');
-    modalEditBtn.textContent = 'Editar';
-
-    /*
-    ------ evento que guarda el texto editado ------
-    */
-    modalEditBtn.addEventListener('click', () => {
-      editPost(textareaEditModal.value, id)
-      .then(() => {
-        modalEdit.style.display = 'none';
-      })
-    });
-
-    const endEditModal = document.createElement('span');
-    endEditModal.classList.add('endEditModal');
-    endEditModal.innerHTML = '&times;';
-
-    /*
-    -------- evento que cierra el modal de editar con la X -------
-    */
-    endEditModal.addEventListener('click', () => {
-      document.querySelector('.modalEdit').style.display = 'none';
-    });
-
-    modalContentEdit.appendChild(labelEditModal);
-    modalContentEdit.appendChild(textareaEditModal);
-    modalContentEdit.appendChild(modalEditBtn);
-    modalContentEdit.appendChild(endEditModal);
-    modalEdit.appendChild(modalContentEdit);
-
-    document.querySelector('.modalEdit').style.display = 'flex';
-  };
-
-  /*
   ------función para publicar un nuevo post ------
   */
   modalBtnHome.addEventListener('click', () => {
@@ -324,9 +318,8 @@ export const Home = (onNavigate) => {
   window.addEventListener('DOMContentLoaded', async () => {
     console.log('dom');
     await getData();
-    sectionPost.innerHTML = '';    
+    sectionPost.innerHTML = '';
   });
-  
 
   leftHeaderHome.appendChild(logoHome);
   rightHeaderHome.appendChild(buttonLogOut);

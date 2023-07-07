@@ -5,11 +5,9 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
-  /*
-  getDoc,
-  */
   updateDoc
-} from '@firebase/firestore';
+} from '@firebase/firestore'; /* "getDocs" nuevo */
+
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -17,6 +15,7 @@ import {
   signInWithPopup,
   signOut
 } from 'firebase/auth';
+
 import { auth, db } from '../firebase';
 
 /*
@@ -59,9 +58,13 @@ export const getTask = () => getDocs(collection(db, 'post'));
 
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
-
 /*
-----------  FUNCIONES PARA BORRAR POST ----------
+export const getPost = (id) => getDoc(doc(db, 'post', id));
+export const updatePost = (id, newFields) =>
+  updateDoc(doc(db, 'post', id), newFields);
+
+
+----------  FUNCIONES PARA BORRAR POST----------
 */
 export const deletePost = (postId) => {
   const postRef = doc(db, 'post', postId);
@@ -74,7 +77,7 @@ export const deletePost = (postId) => {
 export const editPost = async (textAreaModal, id) => {
   const docRef = doc(db, 'post', id);
   await updateDoc(docRef, {
-    contenido: `${textAreaModal}`,
+    contenido: `${textAreaModal}`
   });
 };
 /*
