@@ -6,11 +6,12 @@ import {
   agregarUnNuevoPost,
   onGetTask,
   deletePost,
+  editPost,
   addLike,
   /*
   removeLike,
-  logOut
   */
+  logOut  
 } from '../lib';
 
 export const Home = (onNavigate) => {
@@ -34,11 +35,9 @@ export const Home = (onNavigate) => {
   buttonLogOut.classList.add('buttonLogOut');
   buttonLogOut.textContent = 'Cerrar Sesión';
 
-  /*
   buttonLogOut.addEventListener('click', () => {
     logOut().then(() => onNavigate('/'));
   });
-  */
 
   const bottomHomePage = document.createElement('div');
   bottomHomePage.classList.add('bottomHomePage');
@@ -53,6 +52,9 @@ export const Home = (onNavigate) => {
   publicarButton.addEventListener('click', () => {
     document.querySelector('.modalHome').style.display = 'flex';
   });
+
+  const modalEdit = document.createElement('div');
+  modalEdit.classList.add('modalEdit');
 
   const modalHome = document.createElement('div');
   modalHome.classList.add('modalHome');
@@ -171,6 +173,17 @@ export const Home = (onNavigate) => {
         buttonEdit.classList.add('buttonEdit');
         buttonEdit.textContent = 'Editar';
         buttonEdit.setAttribute('data-id', doc.id);
+
+        buttonEdit.addEventListener('click', () => {
+          modalEdit.innerHTML = '';
+          showEditModal(post.contenido, doc.id);
+        });
+
+        
+        
+        
+        
+ 
         //  buttonEdit.forEach(btn => {
         //   btn.addEventListener('click', async (e) => {
         //     const doc = await getPost(e.target.dataset.id)
@@ -197,26 +210,6 @@ export const Home = (onNavigate) => {
         //   });
 
         // })
-        // taskForm.addEventListener("submit", (e) => {
-        //   e.preventDefault();
-
-        //   const title = taskForm["task-title"];
-        //   const description = taskForm["task-description"];
-
-        //   if (!editStatus){
-        //     savePost(title.value, description.value);
-
-        //   }else {
-        //     updatePost(id, {
-        //       title: title.value,
-        //       description: description.value,
-        //     });
-
-        //     editStatus = false;
-        //   }
-
-        //   taskForm.reset();
-        // });
 
         topPost.appendChild(postContent);
 
@@ -230,6 +223,45 @@ export const Home = (onNavigate) => {
       });
     });
   };
+
+  function showEditModal(text, id) {
+    const modalContentEdit = document.createElement('div');
+    modalContentEdit.classList.add('modalContentEdit');
+
+    const labelEditModal = document.createElement('label');
+    labelEditModal.classList.add('labelEditModal');
+
+    const textareaEditModal = document.createElement('textarea');
+    textareaEditModal.classList.add('textareaEditModal');
+    textareaEditModal.value = text;
+
+    const modalEditBtn = document.createElement('button');
+    modalEditBtn.classList.add('modalEditBtn');
+    modalEditBtn.textContent = 'Editar';
+
+    modalEditBtn.addEventListener('click', () => {
+      editPost(textareaEditModal.value, id)
+      .then(() => {
+        modalEdit.style.display = 'none';
+      })
+    });
+
+    const endEditModal = document.createElement('span');
+    endEditModal.classList.add('endEditModal');
+    endEditModal.innerHTML = '&times;';
+
+    endEditModal.addEventListener('click', () => {
+      document.querySelector('.modalEdit').style.display = 'none';
+    });
+
+    modalContentEdit.appendChild(labelEditModal);
+    modalContentEdit.appendChild(textareaEditModal);
+    modalContentEdit.appendChild(modalEditBtn);
+    modalContentEdit.appendChild(endEditModal);
+    modalEdit.appendChild(modalContentEdit);
+
+    document.querySelector('.modalEdit').style.display = 'flex';
+  }
 
   modalBtnHome.addEventListener('click', () => {
     agregarUnNuevoPost(textareaModal.value, db, auth)
@@ -270,6 +302,7 @@ export const Home = (onNavigate) => {
   modalContentHome.appendChild(endModalHome);
   modalHome.appendChild(modalContentHome);
 
+  HomeDiv.appendChild(modalEdit);
   HomeDiv.appendChild(modalHome);
   HomeDiv.appendChild(headerHomepage);
   HomeDiv.appendChild(bottomHomePage);

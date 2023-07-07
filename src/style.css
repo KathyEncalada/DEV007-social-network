@@ -1038,6 +1038,38 @@ body {
       border-radius: 100px;
     }
 
+    .modalEdit{
+      display: none;
+      position: fixed;
+      z-index: 1;
+      border: 2px solid #1b444c;
+      border-radius: 20px;
+      width: 100vw;
+      height: 100vh;
+      background: rgb(0, 0, 0, 0.5);
+    }
+
+    .modalContentEdit{
+      margin: auto;
+      padding: 5rem 1rem 5rem 1rem;
+      text-align: center;
+      background: white;
+      width: 30%;
+      border-radius: 10px;
+      position: relative;
+      display: flex;       
+      flex-direction: column;   
+    }
+
+    .endEditModal{
+      position: absolute;
+      top: 0.5rem;
+      right: 2.5rem;
+      font-size: 2rem;
+      cursor: pointer;
+      color: #1b444c;
+    }
+
     .buttonErase{
       border-color: #211715;
       height: 26px;
