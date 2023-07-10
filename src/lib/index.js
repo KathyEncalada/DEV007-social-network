@@ -5,8 +5,10 @@ import {
   onSnapshot,
   deleteDoc,
   doc,
-  updateDoc
-} from '@firebase/firestore'; /* "getDocs" nuevo */
+  updateDoc,
+  arrayUnion,
+  arrayRemove
+} from '@firebase/firestore';
 
 import {
   GoogleAuthProvider,
@@ -58,12 +60,8 @@ export const getTask = () => getDocs(collection(db, 'post'));
 
 export const onGetTask = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
+
 /*
-export const getPost = (id) => getDoc(doc(db, 'post', id));
-export const updatePost = (id, newFields) =>
-  updateDoc(doc(db, 'post', id), newFields);
-
-
 ----------  FUNCIONES PARA BORRAR POST----------
 */
 export const deletePost = (postId) => {
@@ -84,25 +82,24 @@ export const editPost = async (textAreaModal, id) => {
 ---------- PARA DAR LIKE ----------
 */
 export const addLike = (id, likes) => {
-  console.log('addLike');
   if (likes.length === 0 || !likes.includes(auth.currentUser.email)) {
-    console.log('if');
-    console.log(db);
     updateDoc(doc(db, 'post', id), {
-      likes: [auth.currentUser.email]
+      likes: arrayUnion(auth.currentUser.email)
     })
-      .then((res) => console.log(res))
       .catch((error) => error);
   }
 };
 
 /*
 ---------- PARA QUITAR LIKE ----------
+*/
 
 export const removeLike = (id) =>
-  updateDoc(doc(db, 'posts', id), {
+  updateDoc(doc(db, 'post', id), {
     likes: arrayRemove(auth.currentUser.email)
-  });
+  })
+  .then((res) => console.log(res))
+  .catch((error) => error);
 
 /*
   ---------- PARA CERRAR SESIÓN ----------
