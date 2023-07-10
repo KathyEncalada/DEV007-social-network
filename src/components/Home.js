@@ -8,10 +8,10 @@ import {
   deletePost,
   addLike,
   editPost,
-  /*
-  removeLike,
-  */
   logOut
+  /*
+  removeLike
+  */
 } from '../lib';
 
 export const Home = (onNavigate) => {

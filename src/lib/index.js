@@ -6,6 +6,10 @@ import {
   deleteDoc,
   doc,
   updateDoc
+  /*
+  arrayRemove,
+  arrayUnion
+  */
 } from '@firebase/firestore'; /* "getDocs" nuevo */
 
 import {
@@ -103,7 +107,7 @@ export const removeLike = (id) =>
   updateDoc(doc(db, 'posts', id), {
     likes: arrayRemove(auth.currentUser.email)
   });
-
+*/
 /*
   ---------- PARA CERRAR SESIÓN ----------
 */

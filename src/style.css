@@ -1085,7 +1085,7 @@ body {
   
     /*Estilos modal Home*/
   
-    .modalHome {
+    .modalHome {                          /*contenedor padre del modal*/
       display: none;
       position: fixed;
       z-index: 1;
@@ -1093,10 +1093,10 @@ body {
       border-radius: 20px;
       width: 100vw;
       height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
+      background: rgb(0, 0, 0, 0.5);    /*opacidad del fondo al abrir elmmodal*/
     }
   
-    .modalContentHome {    /* el contenedor del modal*/
+    .modalContentHome {                   /*contenedor donde se hace la publicacion*/
       margin: auto;
       padding: 5rem 1rem 5rem 1rem;
       text-align: center;
@@ -1104,8 +1104,9 @@ body {
       width: 30%;
       border-radius: 10px;
       position: relative;
-      display: flex;              /* nuevo*/
-      flex-direction: column;      /* nuevo*/
+      display: flex;              
+      flex-direction: column;      
+      gap: 8px;                    /*para separar el boton publicar con el texArea*/
     }
   
     .endModalHome {
@@ -1115,5 +1116,42 @@ body {
       font-size: 2rem;
       cursor: pointer;
       color: #1b444c;
+    }
+    .textAreaModal {
+      height: 80px;
+    }
+    .modalBtnHome {
+     background: orange;
+     border-radius: 7px;
+     border: 2px solid #211715;
+     cursor: pointer;
+     height: 30px;
+    }
+
+    /*Estilos modal Home-Editar*/
+
+    .modalContentEdit {
+      margin: auto;
+      padding: 5rem 1rem 5rem 1rem;
+      text-align: center;
+      background: white;
+      width: 30%;
+      border-radius: 10px;
+      position: relative;
+      display: flex;              
+      flex-direction: column;      
+      gap: 8px;      
+    }
+
+    .textareaEditModal {
+      height: 80px;
+    }
+
+    .modalEditBtn {
+      background: orange;
+     border-radius: 7px;
+     border: 2px solid #211715;
+     cursor: pointer;
+     height: 30px;
     }
   }
