@@ -85,8 +85,7 @@ export const addLike = (id, likes) => {
   if (likes.length === 0 || !likes.includes(auth.currentUser.email)) {
     updateDoc(doc(db, 'post', id), {
       likes: arrayUnion(auth.currentUser.email)
-    })
-      .catch((error) => error);
+    }).catch((error) => error);
   }
 };
 
@@ -98,8 +97,8 @@ export const removeLike = (id) =>
   updateDoc(doc(db, 'post', id), {
     likes: arrayRemove(auth.currentUser.email)
   })
-  .then((res) => console.log(res))
-  .catch((error) => error);
+    .then((res) => console.log(res))
+    .catch((error) => error);
 
 /*
   ---------- PARA CERRAR SESIÓN ----------

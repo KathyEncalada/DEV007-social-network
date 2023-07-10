@@ -5,15 +5,18 @@ importamos la funcion que vamos a testear
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  signInWithPopup
+  signInWithPopup,
+  signOut
 } from 'firebase/auth';
-import { addDoc, deleteDoc } from '@firebase/firestore';
+import { addDoc, deleteDoc, updateDoc } from '@firebase/firestore';
 import {
   crearUsuarioConCorreoYContraseña,
   iniciarSesionConCorreoYContraseña,
   initSessionsWithGoogle,
   agregarUnNuevoPost,
-  deletePost
+  deletePost,
+  editPost,
+  logOut
 } from '../src/lib';
 /*
 jest.mock('firebase/auth', () => ({ signInWithEmailAndPassword: () => {} }));
@@ -107,5 +110,25 @@ describe('deletePost', () => {
   it('Deveria llamar a la funcion deleteDoc cuando es ejecutada', async () => {
     await deletePost('mari-cielo12@gmail.com');
     expect(deleteDoc).toHaveBeenCalled();
+  });
+});
+
+describe('editPost', () => {
+  it('es una funcion', () => {
+    expect(typeof editPost).toBe('function');
+  });
+  it('Deveria llamar a la funcion updateDoc cuando es ejecutada', async () => {
+    await editPost('mari-cielo12@gmail.com');
+    expect(updateDoc).toHaveBeenCalled();
+  });
+});
+
+describe('logOut', () => {
+  it('es una funcion', () => {
+    expect(typeof logOut).toBe('function');
+  });
+  it('Deveria llamar a la funcion signOut cuando es ejecutada', async () => {
+    await logOut('mari-cielo12@gmail.com');
+    expect(signOut).toHaveBeenCalled();
   });
 });
