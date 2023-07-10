@@ -8,10 +8,8 @@ import {
   deletePost,
   addLike,
   editPost,
+  removeLike,
   logOut
-  /*
-  removeLike
-  */
 } from '../lib';
 
 export const Home = (onNavigate) => {
@@ -158,14 +156,18 @@ export const Home = (onNavigate) => {
 
   /*
   ----- función que crea el post y su contenido y recorre el array de los post -----
+  
+
+  const postsRef = querySnapshot( orderBy('time', 'desc'))
   */
   const getData = () => {
     onGetTask((querySnapshot) => {
       sectionPost.innerHTML = '';
       querySnapshot.forEach((doc) => {
         const post = doc.data();
+        const likesArr = post.likes;
+        console.log(likesArr);
         const postId = doc.id;
-        console.log(post);
 
         /*
         ----- contenedor padre del nuevo post-----
@@ -207,7 +209,7 @@ export const Home = (onNavigate) => {
         */
         const spanLike = document.createElement('span');
         spanLike.classList.add('spanLike');
-        spanLike.innerHTML = '(0)';
+        spanLike.innerHTML = `(${likesArr.length})`;
 
         /*
         ---- like -----
@@ -215,32 +217,23 @@ export const Home = (onNavigate) => {
         const likeImg = document.createElement('img');
         likeImg.classList.add('likeImg');
         likeImg.alt = 'corazon like color';
-        likeImg.src = './imagenes/like.png';
+        if (likesArr.includes(auth.currentUser.email)) {
+          likeImg.src = './imagenes/like.png';
+        } else {
+          likeImg.src = './imagenes/dislike.png';
+        }
 
         /*
         ----- funcion dar like y guardar firebase ---- 
         */
 
         likeImg.addEventListener('click', () => {
-          console.log('like', doc.id);
-          addLike(doc.id, post.likes);
+          if (likesArr.includes(auth.currentUser.email)) {
+            removeLike(doc.id);
+          } else {
+            addLike(doc.id, post.likes);
+          }
         });
-
-        // if(likesArr.includes(auth.currentUser.email)) {
-        // spanLike.innerHTML = `(${likesArr.length})`;
-        // likeImg.addEventListener('click', () => {
-        // removeLike(docRef.id)
-        // .then(() => {
-        // likeImg.src = "./imagenes/dislike.png";
-        // })
-        // .catch((error) => {
-        // console.log('error al mover el like', error);
-        // });
-        // })
-        // } else {
-        // spanLike.innerHTML = `(${likesArr.length})`;
-        // likeImg.src = "./imagenes/dislike.png";
-        // };
 
         spanLikeContenedor.appendChild(likeImg);
         spanLikeContenedor.appendChild(spanLike);
@@ -317,7 +310,7 @@ export const Home = (onNavigate) => {
   */
   window.addEventListener('DOMContentLoaded', async () => {
     console.log('dom');
-    await getData();
+    getData();
     sectionPost.innerHTML = '';
   });
 
