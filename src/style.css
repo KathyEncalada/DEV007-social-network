@@ -1129,7 +1129,7 @@ body {
     }
 
     /*Estilos modal Home-Editar*/
-
+/*
     .modalContentEdit {
       margin: auto;
       padding: 5rem 1rem 5rem 1rem;
@@ -1142,7 +1142,7 @@ body {
       flex-direction: column;      
       gap: 8px;      
     }
-
+*/
     .textareaEditModal {
       height: 80px;
     }

@@ -7,7 +7,9 @@ import {
   doc,
   updateDoc,
   arrayUnion,
-  arrayRemove
+  arrayRemove,
+  query,
+  orderBy
 } from '@firebase/firestore';
 
 import {
@@ -59,7 +61,10 @@ export function agregarUnNuevoPost(contenido) {
 export const getTask = () => getDocs(collection(db, 'post'));
 
 export const onGetTask = (callback) =>
-  onSnapshot(collection(db, 'post'), callback);
+  onSnapshot(
+    query(collection(db, 'post'), orderBy('datetime', 'desc')),
+    callback
+  );
 
 /*
 ----------  FUNCIONES PARA BORRAR POST----------
