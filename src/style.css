@@ -1033,6 +1033,7 @@ body {
     align-self: center;
     color: #242424;
     margin-top: 0rem;
+    font-size: x-large;
   }
 
   .bottomPost {
@@ -1125,13 +1126,8 @@ body {
     cursor: pointer;
     height: 30px;
   }
-
-  /*.buttonsPost{
-      display: grid;
-      grid-template-rows: 30% 30% 30%;
-    }
   
-    /*Estilos modal Home*/
+  /*Estilos modal Home*/
 
   .modalHome {
     /*contenedor padre del modal*/
