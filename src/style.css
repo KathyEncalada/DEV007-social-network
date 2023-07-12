@@ -1,1157 +1,1180 @@
 body {
+  height: 100vh;
+  margin: 0;
+}
+
+.ruteo {
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  /* Estilos para pantallas pequeñas */
+
+  /*Estilos Login*/
+
+  .loginContainer {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
-    margin: 0;
   }
-  
-  .ruteo {
+
+  .topSection {
+    display: flex;
+    background-color: #1b444c;
+    height: 40vh;
+    align-items: center;
+  }
+
+  .imgLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoRed {
+    width: 60%;
+  }
+
+  .modalWindow {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContent {
+    margin: auto;
+    padding: 1rem 1rem 2rem 1rem;
+    text-align: center;
+    background: white;
+    width: 80%;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .modalInput {
+    border: 1px solid #1b444c;
+    border-radius: 5px;
+    padding: 0.5rem 2rem;
+  }
+
+  .modalButton {
+    border: 1px solid #1b444c;
+    border-radius: 5px;
+    background-color: #1b444c;
+    color: white;
+    padding: 0.5rem;
+  }
+
+  .closeModal {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+
+  .bottomSection {
+    background-color: #e0e0e0;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedorLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 0.7rem;
+    width: 70%;
+    height: 50%;
+    border: 2px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 5rem 2rem;
+  }
+
+  .inputUsermail {
+    padding: 15px 10px;
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .inputPassword {
+    padding: 15px 10px;
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    font-size: medium;
+  }
+
+  .loginButton1 {
+    background-color: #1b444c;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: large;
+  }
+
+  .forgetLk {
+    color: orange;
+    align-self: center;
+  }
+
+  .googleButton {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border: 2px solid #1b444c;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .googleLogoContainer {
+    display: flex;
+    height: 4vh;
+    margin-right: 1rem;
+  }
+
+  .textGoogle {
+    font-size: medium;
+  }
+
+  .registerLk {
+    align-self: center;
+  }
+
+  .linkReg {
+    color: #a97b51;
+  }
+
+  /*Estilos register*/
+
+  .registerDiv {
+    display: flex;
+    flex-direction: column;
     height: 100vh;
   }
-  
-  @media (max-width: 768px) {   /* Estilos para pantallas pequeñas */
-  
-    /*Estilos Login*/
-  
-    .loginContainer {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-  
-    .topSection {
-      display: flex;
-      background-color: #1b444c;
-      height: 40vh;
-      align-items: center;
-    }
-  
-    .imgLogo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .logoRed {
-      width: 60%;
-    }
-  
-    .modalWindow {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
-  
-    .modalContent {
-      margin: auto;
-      padding: 1rem 1rem 2rem 1rem;
-      text-align: center;
-      background: white;
-      width: 80%;
-      border-radius: 10px;
-      position: relative;
-    }
-  
-    .modalInput {
-      border: 1px solid #1b444c;
-      border-radius: 5px;
-      padding: 0.5rem 2rem;
-    }
-  
-    .modalButton {
-      border: 1px solid #1b444c;
-      border-radius: 5px;
-      background-color: #1b444c;
-      color: white;
-      padding: 0.5rem;
-    }
-  
-    .closeModal {
-      position: absolute;
-      top: 0.5rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
-  
-    .bottomSection {
-      background-color: #e0e0e0;
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .contenedorLogin {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 0.7rem;
-      width: 70%;
-      height: 50%;
-      border: 2px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 5rem 2rem;
-    }
-  
-    .inputUsermail {
-      padding: 15px 10px;
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      font-size: medium;
-    }
-  
-    .inputPassword {
-      padding: 15px 10px;
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      font-size: medium;
-    }
-  
-    .loginButton1 {
-      background-color: #1b444c;
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: large;
-    }
-  
-    .forgetLk {
-      color: orange;
-      align-self: center;
-    }
-  
-    .googleButton {
-      display: flex;
-      flex-direction: row-reverse;
-      background-color: white;
-      border: 2px solid #1b444c;
-      border-radius: 10px;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .googleLogoContainer {
-      display: flex;
-      height: 4vh;
-      margin-right: 1rem;
-    }
-  
-    .textGoogle {
-      font-size: medium;
-    }
-  
-    .registerLk {
-      align-self: center;
-    }
-  
-    .linkReg {
-      color: #a97b51;
-    }
-  
-    /*Estilos register*/
-  
-    .registerDiv {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-  
-    .topRegister {
-      display: flex;
-      background-color: #1b444c;
-      height: 40vh;
-      align-items: center;
-    }
-  
-    .logoPets {
-      width: 60%;
-    }
-  
-    .bottomRegister {
-      display: flex;
-      background-color: #e0e0e0;
-      height: 60vh;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .containerRegister {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 1rem;
-      width: 70%;
-      border: 2px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 2rem 2rem;
-    }
-  
-    #input-email {
-      border-radius: 10px;
-      padding: 15px 10px;
-      font-size: medium;
-      border: 1px solid #1b444c;
-    }
-  
-    #input-password {
-      border-radius: 10px;
-      padding: 15px 10px;
-      font-size: medium;
-      border: 1px solid #1b444c;
-    }
-  
-    #input-nombreApellido {
-      border-radius: 10px;
-      padding: 15px 10px;
-      font-size: medium;
-      border: 1px solid #1b444c;
-    }
-  
-    .registerButton2 {
-      background-color: #211715;
-      border: none;
-      color: white;
-      padding: 15px 32px;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: large;
-    }
-  
-    .registerConCuenta {
-      color: black;
-      align-self: center;
-    }
-  
-    .linkConCuenta {
-      color: #a97b51;
-      font-size: medium;
-    }
-  
-    /*Estilos Home*/
-  
-    .HomeDiv {
-      background-color: #1b444c;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-  
-    .headerHomepage {
-      display: flex;
-      flex-direction: row;
-      background-color: #afb4b5;
-      height: 10vh;
-      width: 100%;
-      margin-top: 0.8rem;
-    }
-  
-    .leftHome {
-      width: 30%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: left;
-      padding-left: 1rem;
-    }
-  
-    .logoHome {
-      width: 70%;
-    }
-  
-    .rightHome {
-      width: 70%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-    }
-  
-    #HomeResumePageBtn {
-      font-size: 15px;
-      padding: 0.5rem 1rem;
-      border-radius: 40px;
-      border-color: white;
-      color: rgb(61, 60, 60);
-      cursor: pointer;
-    }
-  
-    .bottomHomePage {
-      display: flex;
-      height: 90vh;
-    }
-  
-    .postPublicar{
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      height: 10%;
-      align-items: center;
-    }
-  
-    .publicarButton {
-      text-align: center;
-      border: 2px solid #afb4b5;
-      border-radius: 20px;
-      font-size: large;
-      padding: 0.8rem 3rem;
-    }
-  
-    /*Estilos modal Home*/
-  
-    .modalHome {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
-  
-    .modalContentHome {
-      margin: auto;
-      padding: 1rem 1rem 2rem 1rem;
-      text-align: center;
-      background: white;
-      width: 80%;
-      border-radius: 20px;
-      position: relative;
-      font-size: x-small;
-    }
-  
-    .endModalHome {
-      position: absolute;
-      top: 0.5rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
+
+  .topRegister {
+    display: flex;
+    background-color: #1b444c;
+    height: 40vh;
+    align-items: center;
+  }
+
+  .logoPets {
+    width: 60%;
+  }
+
+  .bottomRegister {
+    display: flex;
+    background-color: #e0e0e0;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerRegister {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1rem;
+    width: 70%;
+    border: 2px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 2rem 2rem;
+  }
+
+  #input-email {
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: medium;
+    border: 1px solid #1b444c;
+  }
+
+  #input-password {
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: medium;
+    border: 1px solid #1b444c;
+  }
+
+  #input-nombreApellido {
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: medium;
+    border: 1px solid #1b444c;
+  }
+
+  .registerButton2 {
+    background-color: #211715;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: large;
+  }
+
+  .registerConCuenta {
+    color: black;
+    align-self: center;
+  }
+
+  .linkConCuenta {
+    color: #a97b51;
+    font-size: medium;
+  }
+
+  /*Estilos Home*/
+
+  .HomeDiv {
+    background-color: #1b444c;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .headerHomepage {
+    display: flex;
+    flex-direction: row;
+    background-color: #afb4b5;
+    height: 10vh;
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .leftHome {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    padding-left: 1rem;
+  }
+
+  .logoHome {
+    width: 70%;
+  }
+
+  .rightHome {
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  #HomeResumePageBtn {
+    font-size: 15px;
+    padding: 0.5rem 1rem;
+    border-radius: 40px;
+    border-color: white;
+    color: rgb(61, 60, 60);
+    cursor: pointer;
+  }
+
+  .bottomHomePage {
+    display: flex;
+    height: 90vh;
+  }
+
+  .postPublicar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 10%;
+    align-items: center;
+  }
+
+  .publicarButton {
+    text-align: center;
+    border: 2px solid #afb4b5;
+    border-radius: 20px;
+    font-size: large;
+    padding: 0.8rem 3rem;
+  }
+
+  /*Estilos modal Home*/
+
+  .modalHome {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContentHome {
+    margin: auto;
+    padding: 1rem 1rem 2rem 1rem;
+    text-align: center;
+    background: white;
+    width: 80%;
+    border-radius: 20px;
+    position: relative;
+    font-size: x-small;
+  }
+
+  .endModalHome {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+}
+
+@media (min-width: 770px) and (max-width: 1200px) {
+  /* Estilos para pantallas medianas */
+
+  /*Estilos Login*/
+
+  .loginContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .topSection {
+    display: flex;
+    background-color: #1b444c;
+    height: 40vh;
+    align-items: center;
+  }
+
+  .imgLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoRed {
+    width: 50%;
+  }
+
+  .modalWindow {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContent {
+    margin: auto;
+    padding: 3rem;
+    text-align: center;
+    background: white;
+    width: 80%;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .modalInput {
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    padding: 1rem 1rem;
+    width: 50%;
+  }
+
+  .modalButton {
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    background-color: #1b444c;
+    color: white;
+    padding: 1rem;
+    width: 30%;
+  }
+
+  .closeModal {
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+
+  .bottomSection {
+    background-color: #e0e0e0;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedorLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1rem;
+    width: 80%;
+    border: 3px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  .inputUsermail {
+    padding: 1.5rem;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .inputPassword {
+    padding: 1.5rem;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .loginButton1 {
+    background-color: #1b444c;
+    border: none;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 20px;
+    font-size: xx-large;
+  }
+
+  .forgetLk {
+    color: orange;
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .googleButton {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border: 3px solid #1b444c;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .googleLogoContainer {
+    display: flex;
+    height: 5vh;
+    margin-right: 2rem;
+  }
+
+  .textGoogle {
+    font-size: x-large;
+  }
+
+  .registerLk {
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .linkReg {
+    color: #a97b51;
+    font-size: large;
+  }
+
+  /*Estilos register*/
+
+  .registerDiv {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .topRegister {
+    display: flex;
+    background-color: #1b444c;
+    height: 40vh;
+    align-items: center;
+  }
+
+  .logoPets {
+    width: 50%;
+  }
+
+  .bottomRegister {
+    display: flex;
+    background-color: #e0e0e0;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerRegister {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1.5rem;
+    width: 80%;
+    border: 3px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  #input-nombreApellido {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  #input-email {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  #input-password {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  .registerButton2 {
+    background-color: #211715;
+    border: none;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: xx-large;
+  }
+
+  .registerConCuenta {
+    color: black;
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .linkConCuenta {
+    color: #a97b51;
+    font-size: x-large;
+  }
+
+  /*Estilos Home*/
+
+  .HomeDiv {
+    display: flex;
+    height: 100vh;
+    background-color: #1b444c;
+    flex-direction: column;
+  }
+
+  .headerHomepage {
+    display: flex;
+    flex-direction: row;
+    background-color: #afb4b5;
+    height: 15vh;
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .leftHome {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    padding-left: 1rem;
+  }
+
+  .logoHome {
+    width: 70%;
+  }
+
+  .rightHome {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  #HomeResumePageBtn {
+    font-size: 20px;
+    padding: 0.5rem 3rem;
+    border-radius: 40px;
+    border-color: white;
+    color: rgb(61, 60, 60);
+    cursor: pointer;
+  }
+
+  .bottomHomePage {
+    display: flex;
+    height: 90vh;
+  }
+
+  .postPublicar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 10%;
+    align-items: center;
+  }
+
+  .publicarButton {
+    text-align: center;
+    border: 2px solid #afb4b5;
+    border-radius: 20px;
+    font-size: x-large;
+    padding: 1rem 4rem;
+  }
+
+  /*Estilos modal Home*/
+
+  .modalHome {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContentHome {
+    margin: auto;
+    padding: 1rem 1rem 2rem 1rem;
+    text-align: center;
+    background: white;
+    width: 80%;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .endModalHome {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+}
+
+@media (min-width: 1200px) {
+  /* Estilos para pantallas grandes */
+
+  /*Estilos Login*/
+
+  .loginContainer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .topSection {
+    display: flex;
+    background-color: #1b444c;
+    width: 50%;
+    align-items: center;
+  }
+
+  .imgLogo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logoRed {
+    width: 80%;
+  }
+
+  .modalWindow {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContent {
+    margin: auto;
+    padding: 3rem;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .modalInput {
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    padding: 1rem 1rem;
+    width: 50%;
+    font-size: large;
+  }
+
+  .modalButton {
+    border: 1px solid #1b444c;
+    border-radius: 10px;
+    background-color: #1b444c;
+    color: white;
+    padding: 1rem;
+    width: 30%;
+    font-size: large;
+  }
+
+  .closeModal {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+
+  .bottomSection {
+    background-color: #e0e0e0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedorLogin {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1rem;
+    width: 70%;
+    border: 3px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 3rem 2rem;
+  }
+
+  .inputUsermail {
+    padding: 1.5rem;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .inputPassword {
+    padding: 1.5rem;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .loginButton1 {
+    background-color: #211715;
+    border: none;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .forgetLk {
+    color: orange;
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .googleButton {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border: 3px solid #1b444c;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .googleLogoContainer {
+    display: flex;
+    height: 4vh;
+    margin-right: 1rem;
+  }
+
+  .textGoogle {
+    font-size: x-large;
+  }
+
+  .registerLk {
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .linkReg {
+    color: #a97b51;
+    font-size: x-large;
+  }
+
+  /*Estilos register*/
+
+  .registerDiv {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .topRegister {
+    display: flex;
+    background-color: #1b444c;
+    width: 50%;
+    align-items: center;
+  }
+
+  .logoPets {
+    width: 80%;
+  }
+
+  .bottomRegister {
+    display: flex;
+    background-color: #e0e0e0;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerRegister {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    gap: 1.5rem;
+    width: 70%;
+    border: 3px solid #afb4b5;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 3rem 2rem;
+  }
+
+  #input-email {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  #input-password {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  #input-nombreApellido {
+    border-radius: 20px;
+    padding: 1.5rem;
+    font-size: x-large;
+    border: 2px solid #1b444c;
+  }
+
+  .registerButton2 {
+    background-color: #211715;
+    border: none;
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 20px;
+    font-size: x-large;
+  }
+
+  .registerConCuenta {
+    color: black;
+    align-self: center;
+    font-size: x-large;
+  }
+
+  .linkConCuenta {
+    color: #a97b51;
+    font-size: x-large;
+  }
+
+  /*Estilos Home*/
+
+  .HomeDiv {
+    display: flex;
+    background-color: #1b444c;
+    flex-direction: column;
+  }
+
+  .headerHomepage {
+    display: flex;
+    background-color: #afb4b5;
+    height: 15vh;
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+ /* 
+ .leftHeaderHome {
+  }
+*/
+  .logoHome {
+    width: 9%;
+    margin-top: 0.3rem;
+    margin-left: 0.5rem;
+  }
+
+  /*
+  .rightHeaderHome {
+  }
+  */
+
+  .buttonLogOut {
+    font-size: 20px;
+    padding: 0.5rem 3rem;
+    border-radius: 40px;
+    border-color: white;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+  }
+
+  .bottomHomePage {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+  }
+
+  .postPublicar {
+    display: flex;
+    min-height: 15vh;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+  }
+
+  .publicarButton {
+    text-align: center;
+    border: 2px solid #afb4b5;
+    border-radius: 20px;
+    font-size: x-large;
+    padding: 1rem 4rem;
+  }
+
+  .sectionPost {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 25px;
+  }
+
+  #postContainer {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    height: 20vh;
+    background-color: #afb4b5;
+    border: 2px solid #452512;
+    border-radius: 20px;
+  }
+
+  .topPost {
+    display: flex;
+    width: 100%;
+    height: 60%;
+    padding-top: 1rem;
+    justify-content: center;
+  }
+
+  .postContent {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 85%;
+    border: 2px solid #452512;
+    border-radius: 20px;
+    background-color: white;
+    justify-content: center;
   }
   
-  @media (min-width: 770px) and (max-width: 1200px) {  /* Estilos para pantallas medianas */
-  
-    /*Estilos Login*/
-  
-    .loginContainer {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-  
-    .topSection {
-      display: flex;
-      background-color: #1b444c;
-      height: 40vh;
-      align-items: center;
-    }
-  
-    .imgLogo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .logoRed {
-      width: 50%;
-    }
-  
-    .modalWindow {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
-  
-    .modalContent {
-      margin: auto;
-      padding: 3rem;
-      text-align: center;
-      background: white;
-      width: 80%;
-      border-radius: 10px;
-      position: relative;
-    }
-  
-    .modalInput {
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      padding: 1rem 1rem;
-      width: 50%;
-    }
-  
-    .modalButton {
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      background-color: #1b444c;
-      color: white;
-      padding: 1rem;
-      width: 30%;
-    }
-  
-    .closeModal {
-      position: absolute;
-      top: 0.5rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
-  
-    .bottomSection {
-      background-color: #e0e0e0;
-      height: 60vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .contenedorLogin {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 1rem;
-      width: 80%;
-      border: 3px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 3rem;
-    }
-  
-    .inputUsermail {
-      padding: 1.5rem;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .inputPassword {
-      padding: 1.5rem;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .loginButton1 {
-      background-color: #1b444c;
-      border: none;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 20px;
-      font-size: xx-large;
-    }
-  
-    .forgetLk {
-      color: orange;
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .googleButton {
-      display: flex;
-      flex-direction: row-reverse;
-      background-color: white;
-      border: 3px solid #1b444c;
-      border-radius: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .googleLogoContainer {
-      display: flex;
-      height: 5vh;
-      margin-right: 2rem;
-    }
-  
-    .textGoogle {
-      font-size: x-large;
-    }
-  
-    .registerLk {
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .linkReg {
-      color: #a97b51;
-      font-size: large;
-    }
-  
-    /*Estilos register*/
-  
-    .registerDiv {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-  
-    .topRegister {
-      display: flex;
-      background-color: #1b444c;
-      height: 40vh;
-      align-items: center;
-    }
-  
-    .logoPets {
-      width: 50%;
-    }
-  
-    .bottomRegister {
-      display: flex;
-      background-color: #e0e0e0;
-      height: 60vh;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .containerRegister {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 1.5rem;
-      width: 80%;
-      border: 3px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 3rem;
-    }
-  
-    #input-nombreApellido {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    #input-email {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    #input-password {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    .registerButton2 {
-      background-color: #211715;
-      border: none;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
-      border-radius: 20px;
-      font-size: xx-large;
-    }
-  
-    .registerConCuenta {
-      color: black;
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .linkConCuenta {
-      color: #a97b51;
-      font-size: x-large;
-    }
-  
-    /*Estilos Home*/
-  
-    .HomeDiv {
-      display: flex;
-      height: 100vh;
-      background-color: #1b444c;
-      flex-direction: column;
-    }
-  
-    .headerHomepage {
-      display: flex;
-      flex-direction: row;
-      background-color: #afb4b5;
-      height: 15vh;
-      width: 100%;
-      margin-top: 0.8rem;
-    }
-  
-    .leftHome {
-      width: 30%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: left;
-      padding-left: 1rem;
-    }
-  
-    .logoHome {
-      width: 70%;
-    }
-  
-    .rightHome {
-      width: 90%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-    }
-  
-    #HomeResumePageBtn {
-      font-size: 20px;
-      padding: 0.5rem 3rem;
-      border-radius: 40px;
-      border-color: white;
-      color: rgb(61, 60, 60);
-      cursor: pointer;
-    }
-  
-    .bottomHomePage {
-      display: flex;
-      height: 90vh;
-    }
-  
-    .postPublicar{
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      height: 10%;
-      align-items: center;
-    }
-  
-    .publicarButton {
-      text-align: center;
-      border: 2px solid #afb4b5;
-      border-radius: 20px;
-      font-size: x-large;
-      padding: 1rem 4rem;
-    }
-  
-    /*Estilos modal Home*/
-  
-    .modalHome {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
-  
-    .modalContentHome {
-      margin: auto;
-      padding: 1rem 1rem 2rem 1rem;
-      text-align: center;
-      background: white;
-      width: 80%;
-      border-radius: 10px;
-      position: relative;
-    }
-  
-    .endModalHome {
-      position: absolute;
-      top: 0.5rem;
-      right: 2.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
+  .parrafoUsuario{
+    color: #242424;
+    font-weight: normal;
+    font-size: large;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
   }
-  
-  @media (min-width: 1200px) {   /* Estilos para pantallas grandes */
-  
-    /*Estilos Login*/
-  
-    .loginContainer {
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-    }
-  
-    .topSection {
-      display: flex;
-      background-color: #1b444c;
-      width: 50%;
-      align-items: center;
-    }
-  
-    .imgLogo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .logoRed {
-      width: 80%;
-    }
-  
-    .modalWindow {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
-  
-    .modalContent {
-      margin: auto;
-      padding: 3rem;
-      text-align: center;
-      background: white;
-      border-radius: 10px;
-      position: relative;
-    }
-  
-    .modalInput {
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      padding: 1rem 1rem;
-      width: 50%;
-      font-size: large;
-    }
-  
-    .modalButton {
-      border: 1px solid #1b444c;
-      border-radius: 10px;
-      background-color: #1b444c;
-      color: white;
-      padding: 1rem;
-      width: 30%;
-      font-size: large;
-    }
-  
-    .closeModal {
-      position: absolute;
-      top: 0.5rem;
-      right: 2.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
-  
-    .bottomSection {
-      background-color: #e0e0e0;
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  
-    .contenedorLogin {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 1rem;
-      width: 70%;
-      border: 3px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 3rem 2rem;
-    }
-  
-    .inputUsermail {
-      padding: 1.5rem;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .inputPassword {
-      padding: 1.5rem;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .loginButton1 {
-      background-color: #211715;
-      border: none;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .forgetLk {
-      color: orange;
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .googleButton {
-      display: flex;
-      flex-direction: row-reverse;
-      background-color: white;
-      border: 3px solid #1b444c;
-      border-radius: 20px;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .googleLogoContainer {
-      display: flex;
-      height: 4vh;
-      margin-right: 1rem;
-    }
-  
-    .textGoogle {
-      font-size: x-large;
-    }
-  
-    .registerLk {
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .linkReg {
-      color: #a97b51;
-      font-size: x-large;
-    }
-  
-    /*Estilos register*/
-  
-    .registerDiv {
-      display: flex;
-      flex-direction: row;
-      height: 100vh;
-    }
-  
-    .topRegister {
-      display: flex;
-      background-color: #1b444c;
-      width: 50%;
-      align-items: center;
-    }
-  
-    .logoPets {
-      width: 80%;
-    }
-  
-    .bottomRegister {
-      display: flex;
-      background-color: #e0e0e0;
-      width: 50%;
-      align-items: center;
-      justify-content: center;
-    }
-  
-    .containerRegister {
-      display: flex;
-      flex-direction: column;
-      background-color: white;
-      gap: 1.5rem;
-      width: 70%;
-      border: 3px solid #afb4b5;
-      border-radius: 20px;
-      justify-content: center;
-      padding: 3rem 2rem;
-    }
-  
-    #input-email {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    #input-password {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    #input-nombreApellido {
-      border-radius: 20px;
-      padding: 1.5rem;
-      font-size: x-large;
-      border: 2px solid #1b444c;
-    }
-  
-    .registerButton2 {
-      background-color: #211715;
-      border: none;
-      color: white;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 20px;
-      font-size: x-large;
-    }
-  
-    .registerConCuenta {
-      color: black;
-      align-self: center;
-      font-size: x-large;
-    }
-  
-    .linkConCuenta {
-      color: #a97b51;
-      font-size: x-large;
-    }
-  
-    /*Estilos Home*/
-  
-    .HomeDiv {
-      display: flex;
-      height: 100vh;
-      background-color: #1b444c;
-      flex-direction: column;
-    }
-  
-    .headerHomepage {
-      display: flex;
-      flex-direction: row;
-      background-color: #afb4b5;
-      height: 15vh;
-      width: 100%;
-      margin-top: 0.8rem;
-    }
-  
-    .leftHome {
-      width: 30%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: left;
-      padding-left: 1rem;
-    }
-  
-    .logoHome {
-      width: 10%;
-    }
-  
-    .rightHome {
-      width: 90%;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-end;
-    }
-  
-    .buttonLogOut {
-      font-size: 20px;
-      padding: 0.5rem 3rem;
-      border-radius: 40px;
-      border-color: white;
-      cursor: pointer;
-      margin-top: 1.5rem;
-      margin-right: 1rem;
-    }
-    
-    .bottomHomePage {
-      display: flex;
-      flex-direction:column;
-      align-items: center;
-      height: 90vh;
-    }
-  
-    .postPublicar{
-      display: flex;
-      height: 15%;
-      align-items: center;
-    }
-  
-    .publicarButton {
-      text-align: center;
-      border: 2px solid #afb4b5;
-      border-radius: 20px;
-      font-size: x-large;
-      padding: 1rem 4rem;
-    }
 
-    .sectionPost {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-  
-    #postContainer{
-      display: flex;
-      flex-direction: column;
-      width: 80vw;
-      height: 20vh;
-      background-color: #afb4b5;
-      border: 2px solid #452512;
-      border-radius: 20px;
-    }
+  .parrafoContenido{
+    align-self: center;
+    color: #242424;
+    margin-top: 0rem;
+  }
 
-    .topPost{
-      display: flex;
-      width: 100%;
-      height: 60%;
-      padding-top: 1rem;
-      padding-left: 2rem;
-    }
+  .bottomPost {
+    display: flex;
+    width: 100%;
+  }
 
-    .postContent{
-      display: flex;
-      width: 90%;
-      height: 90%;
-      border: 2px solid #452512;
-      border-radius: 20px;
-      background-color: white;
-      font-size: x-large;
-      justify-content: center;
-    }
+  .leftBottomPost{
+    display: flex;
+    width: 50%;
+  }
 
-    .bottomPost{
-      display: flex;
-      width: 100%;
-      height: 40%;
-    }
+  .spanLikeContenedor{
+    margin-left: 2rem;
+  }
 
-    .likeImg {
-      width: 40px;
-      height: 40px;
-    }
+  .likeImg {
+    width: 40px;
+    height: 40px;
+  }
 
-    .buttonEdit{
-      border-color: #211715;
-      height: 26px;
-      border-radius: 100px;
-    }
+  .rightBottomPost {
+    display: flex;
+    width: 50%;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-right: 2rem;
 
-    .modalEdit{
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);
-    }
+  }
 
-    .modalContentEdit{
-      margin: auto;
-      padding: 5rem 1rem 5rem 1rem;
-      text-align: center;
-      background: white;
-      width: 30%;
-      border-radius: 10px;
-      position: relative;
-      display: flex;       
-      flex-direction: column;   
-    }
+  .buttonEdit {
+    border-color: #211715;
+    height: 2rem;
+    border-radius: 100px;
+    width: 6rem;
+    font-size: large;
+  }
 
-    .endEditModal{
-      position: absolute;
-      top: 0.5rem;
-      right: 2.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
+  .buttonErase {
+    border-color: #211715;
+    height: 2rem;
+    border-radius: 100px;
+    width: 6rem;
+    font-size: large;
+  }
 
-    .buttonErase{
-      border-color: #211715;
-      height: 26px;
-      border-radius: 100px;
-      align-self: baseline;
-    }
+  /*Estilos modal Home-Editar*/
 
-    .buttonsPost{
+  .modalEdit {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5);
+  }
+
+  .modalContentEdit {
+    margin: auto;
+    padding: 5rem 1rem 5rem 1rem;
+    text-align: center;
+    background: white;
+    width: 30%;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .endEditModal {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+
+  .textareaEditModal {
+    height: 80px;
+  }
+
+  .modalEditBtn {
+    background: orange;
+    border-radius: 7px;
+    border: 2px solid #211715;
+    cursor: pointer;
+    height: 30px;
+  }
+
+  /*.buttonsPost{
       display: grid;
       grid-template-rows: 30% 30% 30%;
     }
-
   
     /*Estilos modal Home*/
-  
-    .modalHome {                          /*contenedor padre del modal*/
-      display: none;
-      position: fixed;
-      z-index: 1;
-      border: 2px solid #1b444c;
-      border-radius: 20px;
-      width: 100vw;
-      height: 100vh;
-      background: rgb(0, 0, 0, 0.5);    /*opacidad del fondo al abrir elmmodal*/
-    }
-  
-    .modalContentHome {                   /*contenedor donde se hace la publicacion*/
-      margin: auto;
-      padding: 5rem 1rem 5rem 1rem;
-      text-align: center;
-      background: white;
-      width: 30%;
-      border-radius: 10px;
-      position: relative;
-      display: flex;              
-      flex-direction: column;      
-      gap: 8px;                    /*para separar el boton publicar con el texArea*/
-    }
-  
-    .endModalHome {
-      position: absolute;
-      top: 0.5rem;
-      right: 2.5rem;
-      font-size: 2rem;
-      cursor: pointer;
-      color: #1b444c;
-    }
-    .textAreaModal {
-      height: 80px;
-    }
-    .modalBtnHome {
-     background: orange;
-     border-radius: 7px;
-     border: 2px solid #211715;
-     cursor: pointer;
-     height: 30px;
-    }
 
-    /*Estilos modal Home-Editar*/
-
-    .modalContentEdit {
-      margin: auto;
-      padding: 5rem 1rem 5rem 1rem;
-      text-align: center;
-      background: white;
-      width: 30%;
-      border-radius: 10px;
-      position: relative;
-      display: flex;              
-      flex-direction: column;      
-      gap: 8px;      
-    }
-
-    .textareaEditModal {
-      height: 80px;
-    }
-
-    .modalEditBtn {
-      background: orange;
-     border-radius: 7px;
-     border: 2px solid #211715;
-     cursor: pointer;
-     height: 30px;
-    }
+  .modalHome {
+    /*contenedor padre del modal*/
+    display: none;
+    position: fixed;
+    z-index: 1;
+    border: 2px solid #1b444c;
+    border-radius: 20px;
+    width: 100vw;
+    height: 100vh;
+    background: rgb(0, 0, 0, 0.5); /*opacidad del fondo al abrir el modal*/
   }
+
+  .modalContentHome {
+    /*contenedor donde se hace la publicacion*/
+    margin: auto;
+    padding: 5rem 1rem 5rem 1rem;
+    text-align: center;
+    background: white;
+    width: 30%;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /*para separar el boton publicar con el texArea*/
+  }
+
+  .endModalHome {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #1b444c;
+  }
+  .textAreaModal {
+    height: 80px;
+  }
+  .modalBtnHome {
+    background: orange;
+    border-radius: 7px;
+    border: 2px solid #211715;
+    cursor: pointer;
+    height: 30px;
+  }
+}

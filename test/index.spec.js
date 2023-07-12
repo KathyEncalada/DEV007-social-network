@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   signOut
 } from 'firebase/auth';
-import { addDoc, deleteDoc, updateDoc } from '@firebase/firestore';
+import { addDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 import {
   crearUsuarioConCorreoYContraseña,
   iniciarSesionConCorreoYContraseña,
@@ -22,7 +22,7 @@ import {
 jest.mock('firebase/auth', () => ({ signInWithEmailAndPassword: () => {} }));
 */
 jest.mock('firebase/auth');
-jest.mock('@firebase/firestore');
+jest.mock('firebase/firestore');
 
 jest.mock('../src/firebase.js', () => ({
   auth: { currentUser: { email: 'mari-cielo12@gmail.com' } }

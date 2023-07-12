@@ -27,7 +27,7 @@ export const Home = (onNavigate) => {
   logoHome.src = './imagenes/logoFinal.png';
 
   const rightHeaderHome = document.createElement('div');
-  rightHeaderHome.classList.add('rigthHeaderHome');
+  rightHeaderHome.classList.add('rightHeaderHome');
 
   const buttonLogOut = document.createElement('button');
   buttonLogOut.classList.add('buttonLogOut');
@@ -53,7 +53,7 @@ export const Home = (onNavigate) => {
 
   const publicarButton = document.createElement('button');
   publicarButton.classList.add('publicarButton');
-  publicarButton.textContent = 'Escribe lo que quieras publicar';
+  publicarButton.textContent = 'Escribe lo que quieras publicar 🐾';
 
   /*
   ----- Evento que abre el modal para publicar post-----
@@ -128,11 +128,11 @@ export const Home = (onNavigate) => {
     /*
     ------ evento que guarda el texto editado ------
     */
-    modalEditBtn.addEventListener('click', () => {
-      editPost(textareaEditModal.value, id).then(() => {
+  modalEditBtn.addEventListener('click', () => {
+    editPost(textareaEditModal.value, id).then(() => {
         modalEdit.style.display = 'none';
-      });
     });
+  });
 
     const endEditModal = document.createElement('span');
     endEditModal.classList.add('endEditModal');
@@ -179,7 +179,7 @@ export const Home = (onNavigate) => {
         ----- parte superior postContainer ------
         */
         const topPost = document.createElement('section');
-        topPost.classList.add('topPost');
+        topPost.classList.add('topPost');  
 
         /* 
         ------ aqui se publica el contenido del nuevo post -----
@@ -188,8 +188,8 @@ export const Home = (onNavigate) => {
         postContent.classList.add('postContent');
         postContent.setAttribute('id', postId);
         postContent.innerHTML = `
-        <header>${post.usuario}</header>
-        <p>${post.contenido}</p>
+        <p class = "parrafoUsuario">${post.usuario}</p>
+        <p class = "parrafoContenido">${post.contenido}</p>
         `;
 
         /*
@@ -197,6 +197,12 @@ export const Home = (onNavigate) => {
         */
         const bottomPost = document.createElement('section');
         bottomPost.classList.add('bottomPost');
+
+        const leftBottomPost = document.createElement('div');
+        leftBottomPost.classList.add('leftBottomPost');
+
+        const rightBottomPost = document.createElement('div');
+        rightBottomPost.classList.add('rightBottomPost');
 
         /*
         ------ contenedor likes ------
@@ -278,9 +284,12 @@ export const Home = (onNavigate) => {
 
         topPost.appendChild(postContent);
 
-        bottomPost.appendChild(spanLikeContenedor);
-        bottomPost.appendChild(buttonEdit);
-        bottomPost.appendChild(buttonErase);
+
+        leftBottomPost.appendChild(spanLikeContenedor);
+        rightBottomPost.appendChild(buttonEdit);
+        rightBottomPost.appendChild(buttonErase);
+        bottomPost.appendChild(leftBottomPost);
+        bottomPost.appendChild(rightBottomPost);
 
         postContainer.appendChild(topPost);
         postContainer.appendChild(bottomPost);
