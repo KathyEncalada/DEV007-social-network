@@ -1173,4 +1173,10 @@ body {
     cursor: pointer;
     height: 30px;
   }
+
+  .footerHome{
+    height: 5vh;
+    background-color: #afb4b5;
+    margin-top: 1rem;
+  }
 }

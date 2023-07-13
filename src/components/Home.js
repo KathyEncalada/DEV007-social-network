@@ -326,6 +326,11 @@ export const Home = (onNavigate) => {
     sectionPost.innerHTML = '';
   });
 
+  const footerHome = document.createElement('footer');
+  footerHome.classList.add('footerHome');
+  footerHome.textContent = 'Red Social Creada por Kathe, Cris y Kathy 🐾';
+
+
   leftHeaderHome.appendChild(logoHome);
   rightHeaderHome.appendChild(buttonLogOut);
 
@@ -347,6 +352,7 @@ export const Home = (onNavigate) => {
   HomeDiv.appendChild(modalHome);
   HomeDiv.appendChild(headerHomepage);
   HomeDiv.appendChild(bottomHomePage);
+  HomeDiv.appendChild(footerHome);
 
   return HomeDiv;
 };
