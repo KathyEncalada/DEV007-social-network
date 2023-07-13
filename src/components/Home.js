@@ -37,7 +37,9 @@ export const Home = (onNavigate) => {
   */
 
   buttonLogOut.addEventListener('click', () => {
-    logOut().then(() => onNavigate('/'));
+    logOut().then(() => 
+    localStorage.removeItem(doc.id),
+    onNavigate('/'));
   });
   /*
   ----- Contenedor de la Parte de abajo de la Homepage -----
@@ -168,6 +170,7 @@ export const Home = (onNavigate) => {
         const likesArr = post.likes;
         console.log(likesArr);
         const postId = doc.id;
+        const time = doc.time;
 
         /*
         ----- contenedor padre del nuevo post-----
@@ -186,9 +189,9 @@ export const Home = (onNavigate) => {
         */
         const postContent = document.createElement('div');
         postContent.classList.add('postContent');
-        postContent.setAttribute('id', postId);
+        postContent.setAttribute('id', postId, time);
         postContent.innerHTML = `
-        <p class = "parrafoUsuario">${post.usuario}</p>
+        <p class = "parrafoUsuario">${post.usuario} publicó el ${post.time} a las ${post.localTime}</p>
         <p class = "parrafoContenido">${post.contenido}</p>
         `;
 
